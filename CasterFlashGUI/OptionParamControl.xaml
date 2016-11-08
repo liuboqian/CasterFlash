@@ -1,0 +1,37 @@
+﻿<UserControl x:Class="CasterFlashGUI.OptionParamControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d"
+             d:DesignHeight="32" d:DesignWidth="388">
+
+    <UserControl.Resources>
+        <Style x:Key="NormalControlSize">
+            <Setter Property="Control.Width" Value="100"/>
+        </Style>
+        <Style x:Key="TextBlockSize">
+            <Setter Property="Control.Width" Value="100"/>
+            <Setter Property="TextBlock.TextAlignment" Value="Right"/>
+        </Style>
+        <Style x:Key="TextBoxSize" TargetType="TextBlock">
+            <Setter Property="Width" Value="120"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+        </Style>
+    </UserControl.Resources>
+
+    <StackPanel Orientation="Horizontal">
+        <TextBlock Style="{StaticResource TextBoxSize}">
+                        Flash Type:</TextBlock>
+        <ComboBox Name="ComboOp1" Margin="5"
+                          Style="{StaticResource NormalControlSize}"
+                          ItemsSource="{Binding Path=Op1List}"
+                          SelectedItem="{Binding Path=Op1}"/>
+        <ComboBox Name="ComboOp2" Margin="5"
+                          Style="{StaticResource NormalControlSize}"
+                          ItemsSource="{Binding Path=Op2List}"
+                          SelectedItem="{Binding Path=Op2}"/>
+    </StackPanel>
+
+</UserControl>

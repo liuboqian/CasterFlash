@@ -1,0 +1,597 @@
+MM "32.0" FLAVOR "NO" VERSION "32.0" DATETIME "Fri Sep 30 21:30:01 2016" 
+MACHINE "WIN-NT/VC"  ; 
+startlibrary
+version1
+NumLibs = 3
+Built-In
+CAPE-OPEN
+ACM Built-In
+NumCats = 11
+Mixers/Splitters
+active
+Separators
+active
+Exchangers
+active
+Columns
+active
+Reactors
+active
+Pressure Changers
+active
+Manipulators
+active
+Solids
+active
+Solids Separators
+active
+User Models
+active
+CAPE-OPEN
+active
+endlibrary
+; 
+1
+>VERSION 0
+1
+CasterFlash
+CAPE-OPEN
+{8FFE8B95-FFAB-4032-B652-181AB5206E36}
+? EOBUFFER ? \ "1" \ EOPORTS NAME = "FEED" DIR = "INPUT" STREAM = "2" / NAME 
+= "PRODUCT" DIR = "OUTPUT" STREAM = "3" / NAME = "FEED-0" DIR = "INPUT" 
+STREAM = "4" \ \ EOPARAMS NAME = "FlashOption" VALUE = "TP" UOM = "" / NAME = 
+"T" VALUE = "200" UOM = "" / NAME = "P" VALUE = "100000" UOM = "" / NAME = 
+"Heatduty" VALUE = "200" UOM = "" / NAME = "VaporFraction" VALUE = ".5" UOM = 
+"" \ / "\@" 
+? SETUP MAIN ? \ "RUN-CLASS" RUN-CLASS = FLOWSHEET \ \ SIMULATE INTERACTIVE
+ = NO MOLEFLOW = MOLEFLOW \ ? SETUP GLOBAL ? \ "IN-UNITS" INSET = METCBAR \ ? 
+SETUP DIAGNOSTICS ? ? SETUP "SIM-OPTIONS" ? ; "METCBAR_MOLE" ; ? SETUP 
+"UNITS-SET" METCBAR ? \ DESCRIPTION DESCRIPTION = "User-defined units set" \ 
+\ MMLOCAL \ \ UNITSET BASESET = MET ( 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 5 
+3 4 3 3 3 3 3 3 3 3 4 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 
+3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 5 3 3 3 3 3 3 5 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 
+3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 
+3 3 3 3 3 ) \ ? DATABANKS ? \ DATABANKS \ ? COMPONENTS MAIN ? \ COMPONENTS 
+CID = H2O ANAME = H2O OUTNAME = H2O DBNAME1 = "WATER" ANAME1 = "H2O" /  CID
+ = "ETHAN-01" ANAME = C2H6O-2 OUTNAME = "ETHAN-01" DBNAME1 = "ETHANOL" ANAME1
+ = "C2H6O-2" \ ? COMPONENTS "ADA/PCS" "LE-PROP-DATA" ? ; "METCBAR_MOLE" ; ? 
+COMPONENTS "COMP-LIST" GLOBAL ? ? COMPONENTS "UNIFAC-GROUP" ? ? SOLVE ? \ 
+"RUN-MODE" MODE = SIM \ ? "DYN-OPTIONS" ? ? FLOWSHEET GLOBAL ? \ BLOCK BLKID
+ = 1 BLKTYPE = "CAPE-OPEN" MDLTYPE = "CasterFlash" IN = ( 2 M0-0 4 M0-2 ) 
+OUT = ( 3 M0-1 ) \ ? PROPERTIES MAIN ? \ GPROPERTIES GBASEOPSET = "PENG-ROB" 
+GOPSETNAME = "PENG-ROB" PARCON = -2 \ ? PROPERTIES "OPTION-SETS" "PENG-ROB" ? 
+\ PARAM BASE = "PENG-ROB" \ ? PROPERTIES "NC-PROPS" ? ? PROPERTIES 
+"MOLEC-STRUCT" "ETHAN-01" ? ? PROPERTIES "MOLEC-STRUCT" H2O ? ? PROPERTIES 
+PARAMETERS BINARY SCALAR "MLQKIJ-1" ? ; "ENG_MOLE" ; \ PROP-LIST PARAMNAME = 
+MLQKIJ SETNO = 1 UNITROW = 0 \ ? PROPERTIES PARAMETERS BINARY SCALAR "RKTKIJ-1" 
+? ; "ENG_MOLE" ; \ PROP-LIST PARAMNAME = RKTKIJ SETNO = 1 UNITROW = 0 \ ? 
+PROPERTIES PARAMETERS BINARY "T-DEPENDENT" "ANDKIJ-1" ? ; "ENG_MOLE" ; \ 
+PROP-LIST PARAMNAME = ANDKIJ SETNO = 1 UNITROW = 0 TUNITROW = 22 TUNITLABEL
+ = F NEL = 2 \ ? PROPERTIES PARAMETERS BINARY "T-DEPENDENT" "ANDMIJ-1" ? ; 
+"ENG_MOLE" ; \ PROP-LIST PARAMNAME = ANDMIJ SETNO = 1 UNITROW = 0 TUNITROW = 
+22 TUNITLABEL = F NEL = 2 \ ? PROPERTIES PARAMETERS BINARY "T-DEPENDENT" 
+"MUKIJ-1" ? ; "ENG_MOLE" ; \ PROP-LIST PARAMNAME = MUKIJ SETNO = 1 UNITROW = 0 
+TUNITROW = 22 TUNITLABEL = F NEL = 6 \ ? PROPERTIES PARAMETERS BINARY 
+"T-DEPENDENT" "MULIJ-1" ? ; "ENG_MOLE" ; \ PROP-LIST PARAMNAME = MULIJ SETNO
+ = 1 UNITROW = 0 TUNITROW = 22 TUNITLABEL = F NEL = 11 \ ? PROPERTIES 
+PARAMETERS BINARY "T-DEPENDENT" "PRKBV-1" ? ; "METCBAR_MOLE" ; \ PROP-LIST 
+PARAMNAME = PRKBV SETNO = 1 UNITROW = 0 TUNITROW = 22 TUNITLABEL = C BDBANK
+ = ( "APV86 EOS-LIT" ) NEL = 5 \ ? PROPERTIES PARAMETERS BINARY "T-DEPENDENT" 
+"PRLIJ-1" ? ; "METCBAR_MOLE" ; \ PROP-LIST PARAMNAME = PRLIJ SETNO = 1 
+UNITROW = 0 TUNITROW = 22 TUNITLABEL = C NEL = 8 \ ? PROPERTIES "ATTR-COMPS" 
+? ? POLYMERS ? ? "STREAM-CLASS" SUBSTREAMS ? \ DEF-SUBS-CLA SUBSTREAMS = 
+MIXED \ \ DEF-SUBS-CLA SUBSTREAMS = CISOLID \ \ DEF-SUBS-CLA SUBSTREAMS = NC 
+\ \ DEF-SUBS-CLA SUBSTREAMS = NCPSD \ \ DEF-SUBS-CLA SUBSTREAMS = CIPSD \ ? 
+"STREAM-CLASS" "STREAM-CLASS" ? \ DEFINITION SCLASS = CONVEN \ \ DEFINITION 
+SCLASS = MIXNC \ \ DEFINITION SCLASS = MIXCISLD \ \ DEFINITION SCLASS = 
+MIXNCPSD \ \ DEFINITION SCLASS = MIXCIPSD \ \ DEFINITION SCLASS = MIXCINC \ \ 
+DEFINITION SCLASS = MCINCPSD \ \ HEAT-DEFINE H-SCLASS = HEAT STREAM-ATTR = 
+HEAT \ \ HEAT-DEFINE H-SCLASS = LOAD STREAM-ATTR = LOAD \ ? "STREAM-NAMES" ? 
+? STREAM MATERIAL 2 ? ; "METCBAR_MOLE" ; \ SUBSTREAM SSID = MIXED TEMP = 100. 
+<22> <4> PRES = 1. <20> <5> BASIS = "MOLE-FRAC" TOTFLOW = 10. <-89> <3> TOTAL
+ = 1. <-4> <0> JUNK = 2 \ \ MOLE-FLOW SSID1 = MIXED CID = H2O FLOW = 0.5 <-4> 
+<0> /  SSID1 = MIXED CID = "ETHAN-01" FLOW = 0.5 <-4> <0> \ ? STREAM MATERIAL 
+4 ? ; "METCBAR_MOLE" ; \ SUBSTREAM SSID = MIXED TEMP = 200. <22> <4> PRES = 
+1. <20> <5> BASIS = "MOLE-FRAC" TOTFLOW = 5. <-89> <3> TOTAL = 1. <-89> <0> 
+JUNK = 1 \ \ MOLE-FLOW SSID1 = MIXED CID = H2O FLOW = 1. <-4> <0> \ ? BLOCK 
+"CAPE-OPEN" 1 ? ; "METCBAR_MOLE" ; ; BLOCK ; \ PARAMETERS BYPASS-USER = YES 
+NCHAR = 1 \ \ CHAR CHAR-LIST = ( "{8FFE8B95-FFAB-4032-B652-181AB5206E36}" ) \ 
+\ EOPARAMS NAME = "FlashOption" VALUE = "TP" UOM = "" / NAME = "T" VALUE = 
+"200" UOM = "" / NAME = "P" VALUE = "100000" UOM = "" / NAME = "Heatduty" 
+VALUE = "200" UOM = "" / NAME = "VaporFraction" VALUE = ".5" UOM = "" \ ? 
+"EO-CONV-OPTI" ? \ DMO-PARAMS MODE = DEFAULT \ \ DMO-PARAMS MODE = SIMULATION 
+\ \ DMO-PARAMS MODE = "PARAMETER-ESTIMATION" \ \ DMO-PARAMS MODE = 
+RECONCILIATION \ \ DMO-PARAMS MODE = OPTIMIZATION \ \ LSSQP-PARAMS MODE-L = 
+DEFAULT \ \ LSSQP-PARAMS MODE-L = SIMULATION \ \ LSSQP-PARAMS MODE-L = 
+"PARAMETER-ESTIMATION" \ \ LSSQP-PARAMS MODE-L = RECONCILIATION \ \ 
+LSSQP-PARAMS MODE-L = OPTIMIZATION \ \ NSOLVE-PARAM NSOLVE-MODE = DEFAULT \ \ 
+NSOLVE-PARAM NSOLVE-MODE = SIMULATION \ \ NSOLVE-PARAM NSOLVE-MODE = 
+"PARAMETER-ESTIMATION" \ \ XSLP-PARAMS XSLP-MODE = DEFAULT \ \ XSLP-PARAMS 
+XSLP-MODE = SIMULATION \ \ XSLP-PARAMS XSLP-MODE = "PARAMETER-ESTIMATION" \ \ 
+XSLP-PARAMS XSLP-MODE = RECONCILIATION \ \ XSLP-PARAMS XSLP-MODE = 
+OPTIMIZATION \ ? REPORT "BLOCK-REPORT" ? ? REPORT "STREAM-REPOR" ? \ OPTIONS 
+MOLEFLOW = MOLEFLOW \ 
+
+ GRAPHICS_BACKUP
+PFS V 5.00
+$CONFIG
+paramdata APV86 ENRTL-RK
+paramdata APV86 VLE-IG
+paramdata APV86 VLE-RK
+paramdata APV86 VLE-HOC
+paramdata APV86 LLE-LIT
+paramdata APV86 LLE-ASPEN
+paramdata APV86 VLE-LIT
+paramdata APV86 BINARY
+paramdata APV86 EOS-LIT
+paramdata APV86 HENRY-AP
+paramdata APV86 SRK-ASPEN
+paramdata APV86 PC-SAFT
+paramdata APV86 POLYPCSF
+paramdata APV86 HYSYS
+purebank APV86 PURE32
+purebank APV86 AQUEOUS
+purebank APV86 SOLIDS
+purebank APV86 INORGANIC
+regdbank 1
+ftn_check 1
+autoblockid 0
+autostreamid 0
+showblockid 1
+showstreamid 1
+autoplacement 1
+grid 2
+gridresolution 0.100000
+scale 0
+streamprefix S
+blockprefix B
+labelscale 1.400000
+3DOn 1
+qwformat %.0f
+tempformat %.0f
+presformat %.0f
+flowformat %.0f
+strmqwformat %.0f
+vflowformat %.0f
+mflowformat %.0f
+vfracformat %.2f
+pseudobatch 0
+partial 1
+animation 1
+runanyway 0
+globalqw 0
+globaltemp 0
+globalpres 0
+globalflow 0
+globalstrmqw 0
+globalvflow 0
+globalmflow 0
+globalvfrac 0
+tooldrawvisible 0
+browserheight 7530
+browserwidth 10725
+browsertreewidth 2450
+polyplusenabled 1
+dynaplusenabled 1
+bfracenabled 1
+rtfenabled 1
+rspenabled 1
+initializeicarus 17
+pinchenabled 0
+linklimit 5000
+material_color 0
+material_style 0
+material_width 1
+material_termid  
+heat_color 0
+heat_style 2
+heat_width 1
+heat_termid Q
+work_color 0
+work_style 1
+work_width 1
+work_termid W
+connections_color 9
+connections_style 3
+connections_width 1
+connections_termid C
+measurements_color 4
+measurements_style 3
+measurements_width 1
+measurements_termid M
+displayeoconn 0
+displaycalcs 1
+displaytransfers 0
+displaymeas 0
+displaydesignspecs 0
+displaycalccons 0
+displaymeascons 0
+displayothercons 0
+displayeomeas 1
+displayeomeastype 2
+displayothermanipconn 0
+showeoviews 0
+eoautosave 1
+lockflowsheet 0
+allow_system_userprops 0
+copy_estimation 1
+copy_retrieved 1
+purge_incomp_params 0
+set_default_biparams 0
+set_default_dataset1 0
+set_default_dataset0 1
+bestinput 0
+autosmrun 0
+genallpropset 0
+strmresformdefault 0
+roottype 1
+exchangerfile 1
+streamformat 1
+runsettingfile 1
+usermodelfile 1
+fortranfile 0
+allow_system_autoparam 1
+timeout 1000
+auto_evaluate 0
+customglobaldatapropset1 0 | Custom1 | * | %.2f | 0 | 6
+customglobaldatapropset2 0 | Custom2 | * | %.2f | 1 | 7
+customglobaldatapropset3 0 | Custom3 | * | %.2f | 2 | 8
+customglobaldatapropset4 0 | Custom4 | * | %.2f | 4 | 9
+customglobaldatapropset5 0 | Custom5 | * | %.2f | 5 | 10
+customglobaldatapropset6 0 | Custom6 | * | %.2f | 6 | 11
+economics_active 0
+ignoreEOVarNameFixupsOnImport 1
+tpsaupgrade 0
+#
+$_APWNSHELL_SETTINGS
+<CommonShellSettings xmlns="http://schemas.aspentech.com/xaml/presentation/visualisation/commonshell" xmlns:atapi="clr-namespace:AspenTech.AspenPlus.Infrastructure;assembly=AspenTech.AspenPlus.Infrastructure" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:atapmaa="clr-namespace:AspenTech.AspenPlus.Modules.ApwnApplication;assembly=ApwnShell" xmlns:atapie="clr-namespace:AspenTech.AspenPlus.Infrastructure.Events;assembly=AspenTech.AspenPlus.Infrastructure" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:apmab="clr-namespace:AspenPlus.Modules.ApwnBrowser;assembly=ApwnShell" xmlns:cxv="http://schemas.aspentech.com/xaml/presentation/cxsviewmodel">
+  <CommonShellSettings.CurrentWorkspace>
+    <ShellWorkspace Layout="&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;&#xD;&#xA;&lt;xamDockManager version=&quot;13.1.20131.2073&quot;&gt;&#xD;&#xA;  &lt;contentPanes&gt;&#xD;&#xA;    &lt;contentPane name=&quot;FlowsheetScreenFactory&quot; location=&quot;Document&quot; lastActivatedTime=&quot;2016-09-30T13:30:01.5891001Z&quot; /&gt;&#xD;&#xA;    &lt;contentPane name=&quot;ControlPanelScreenFactory&quot; location=&quot;Document&quot; lastActivatedTime=&quot;2016-09-30T13:20:09.874256Z&quot; /&gt;&#xD;&#xA;    &lt;contentPane name=&quot;_AnonymousScreen5&quot; location=&quot;Document&quot; lastActivatedTime=&quot;2016-09-30T13:19:27.8568527Z&quot; /&gt;&#xD;&#xA;    &lt;contentPane name=&quot;_AnonymousScreen4&quot; location=&quot;Document&quot; lastActivatedTime=&quot;2016-09-30T13:18:48.3685941Z&quot; /&gt;&#xD;&#xA;    &lt;contentPane name=&quot;ModelLibraryScreenFactoryKey&quot; location=&quot;DockedBottom&quot; lastActivatedTime=&quot;2016-09-30T13:18:41.8732226Z&quot; /&gt;&#xD;&#xA;    &lt;contentPane name=&quot;_AnonymousScreen3&quot; location=&quot;Document&quot; lastActivatedTime=&quot;2016-09-30T13:18:30.6675817Z&quot; /&gt;&#xD;&#xA;    &lt;contentPane name=&quot;_AnonymousScreen1&quot; location=&quot;Document&quot; lastActivatedTime=&quot;2016-09-30T13:16:03.2211482Z&quot; /&gt;&#xD;&#xA;    &lt;contentPane name=&quot;_AnonymousScreen2&quot; location=&quot;Document&quot; lastActivatedTime=&quot;2016-09-30T13:16:02.5661107Z&quot; /&gt;&#xD;&#xA;    &lt;contentPane name=&quot;ModelLibrariesManagerWindowKey&quot; location=&quot;Floating&quot; lastFloatingSize=&quot;600,300&quot; lastFloatingWindowRect=&quot;75,75,616,338&quot; lastFloatingLocation=&quot;75,75&quot; lastActivatedTime=&quot;2016-09-30T13:10:45.5539787Z&quot; visibility=&quot;Collapsed&quot; /&gt;&#xD;&#xA;  &lt;/contentPanes&gt;&#xD;&#xA;  &lt;panes&gt;&#xD;&#xA;    &lt;splitPane name=&quot;Za48211ebf2184aaa87bb519945e1c1c4&quot; splitterOrientation=&quot;Vertical&quot; location=&quot;DockedBottom&quot;&gt;&#xD;&#xA;      &lt;contentPane name=&quot;ModelLibraryScreenFactoryKey&quot; /&gt;&#xD;&#xA;    &lt;/splitPane&gt;&#xD;&#xA;    &lt;splitPane name=&quot;Z0c4a0ff5ff2f4734abc938665ca7bf1f&quot; splitterOrientation=&quot;Vertical&quot; location=&quot;Floating&quot; floatingLocation=&quot;75,75&quot; floatingSize=&quot;600,300&quot;&gt;&#xD;&#xA;      &lt;contentPane name=&quot;ModelLibrariesManagerWindowKey&quot; /&gt;&#xD;&#xA;    &lt;/splitPane&gt;&#xD;&#xA;  &lt;/panes&gt;&#xD;&#xA;  &lt;documents splitterOrientation=&quot;Vertical&quot;&gt;&#xD;&#xA;    &lt;splitPane name=&quot;Z0dd54a06ff9a45a69ea3301fec4e5888&quot; splitterOrientation=&quot;Vertical&quot;&gt;&#xD;&#xA;      &lt;tabGroup name=&quot;Z21cd0ef5e0a24e35a4fb388a9eb87a1d&quot; selectedIndex=&quot;0&quot;&gt;&#xD;&#xA;        &lt;contentPane name=&quot;FlowsheetScreenFactory&quot; /&gt;&#xD;&#xA;        &lt;contentPane name=&quot;_AnonymousScreen1&quot; /&gt;&#xD;&#xA;        &lt;contentPane name=&quot;_AnonymousScreen2&quot; /&gt;&#xD;&#xA;        &lt;contentPane name=&quot;ControlPanelScreenFactory&quot; /&gt;&#xD;&#xA;        &lt;contentPane name=&quot;_AnonymousScreen3&quot; /&gt;&#xD;&#xA;        &lt;contentPane name=&quot;_AnonymousScreen4&quot; /&gt;&#xD;&#xA;        &lt;contentPane name=&quot;_AnonymousScreen5&quot; /&gt;&#xD;&#xA;      &lt;/tabGroup&gt;&#xD;&#xA;    &lt;/splitPane&gt;&#xD;&#xA;  &lt;/documents&gt;&#xD;&#xA;&lt;/xamDockManager&gt;" NavigationGroupToSelect="Simulation" IsNavigationPaneMinimized="False" IsRibbonMinimized="False">
+      <ShellWorkspace.Screens>
+        <WorkspaceScreenData PaneName="FlowsheetScreenFactory" ScreenFactoryKey="FlowsheetScreenFactory">
+          <WorkspaceScreenData.ScreenSubject>
+            <atapi:StringScreenSubject subject="{assembly:Null}" fatherNodePath="{assembly:Null}" NavigationGroupKey="Simulation" />
+          </WorkspaceScreenData.ScreenSubject>
+          <WorkspaceScreenData.ScreenState>
+            <ScreenState Zoom="1.4200009999999999" />
+          </WorkspaceScreenData.ScreenState>
+        </WorkspaceScreenData>
+        <WorkspaceScreenData PaneName="ControlPanelScreenFactory" ScreenFactoryKey="ControlPanelScreenFactory">
+          <WorkspaceScreenData.ScreenState>
+            <ScreenState />
+          </WorkspaceScreenData.ScreenState>
+        </WorkspaceScreenData>
+        <WorkspaceScreenData PaneName="_AnonymousScreen5" ScreenFactoryKey="ApwnFormContentFactory">
+          <WorkspaceScreenData.ScreenSubject>
+            <atapmaa:ApwnFormScreenSubject Key="Results Summary.Run Status" NavigationGroupKey="Simulation">
+              <atapmaa:ApwnFormScreenSubject.ShowFormArgs>
+                <atapie:ShowFormEventArgs FormProgId="MMRun_Stat.MMRun_Status" FormKey="Results Summary.Run Status" Header="Results Summary - Run Status" ResultsOnly="True" PathKey="Top.appModelV8.Results Summary">
+                  <atapie:ShowFormEventArgs.Parameters>
+                    <s:String assembly:Key="extra_message_path">Run-Status</s:String>
+                    <s:String assembly:Key="id">Results Summary</s:String>
+                    <s:String assembly:Key="main">Top.appModelV8.Results Summary</s:String>
+                  </atapie:ShowFormEventArgs.Parameters>
+                </atapie:ShowFormEventArgs>
+              </atapmaa:ApwnFormScreenSubject.ShowFormArgs>
+              <atapmaa:ApwnFormScreenSubject.PlotwizardRule>
+                <apmab:ApwnPlotwizardRule ContextPath="Top.appModelV8.Results Summary" />
+              </atapmaa:ApwnFormScreenSubject.PlotwizardRule>
+            </atapmaa:ApwnFormScreenSubject>
+          </WorkspaceScreenData.ScreenSubject>
+          <WorkspaceScreenData.ScreenState>
+            <atapmaa:ApwnFormScreenState>
+              <atapmaa:ApwnFormScreenState.Parameters>
+                <cxv:CxvParameter Name="extra_message_path" Value="Run-Status" />
+                <cxv:CxvParameter Name="main" Value="Top.appModelV8.Results Summary" />
+                <cxv:CxvParameter Name="id" Value="Results Summary" />
+                <cxv:CxvParameter Name="extraComments_path" Value="Comments" />
+                <cxv:CxvParameter Name="extraDescription_path" Value="Input.DESCRIPTION" />
+                <cxv:CxvParameter Name="extraUnits_path" Value="Input.Unit Set" />
+                <cxv:CxvParameter Name="ParamVersionLabel" Value="Aspen Plus Version" />
+                <cxv:CxvParameter Name="selected_tab" Value="tab0" />
+              </atapmaa:ApwnFormScreenState.Parameters>
+            </atapmaa:ApwnFormScreenState>
+          </WorkspaceScreenData.ScreenState>
+        </WorkspaceScreenData>
+        <WorkspaceScreenData PaneName="_AnonymousScreen4" ScreenFactoryKey="ApwnFormContentFactory">
+          <WorkspaceScreenData.ScreenSubject>
+            <atapmaa:ApwnFormScreenSubject Key="Streams.4" NavigationGroupKey="Simulation">
+              <atapmaa:ApwnFormScreenSubject.ShowFormArgs>
+                <atapie:ShowFormEventArgs FormProgId="MMMATERIAL.MMMATERIAL_INPUT" FormKey="Streams.4" Header="4 (MATERIAL)" ResultsOnly="False" PathKey="Top.appModelV8.Streams.4">
+                  <atapie:ShowFormEventArgs.Parameters>
+                    <s:String assembly:Key="id">4</s:String>
+                    <s:String assembly:Key="main">Top.appModelV8.Streams.4</s:String>
+                  </atapie:ShowFormEventArgs.Parameters>
+                </atapie:ShowFormEventArgs>
+              </atapmaa:ApwnFormScreenSubject.ShowFormArgs>
+              <atapmaa:ApwnFormScreenSubject.PlotwizardRule>
+                <apmab:ApwnPlotwizardRule ContextPath="Top.appModelV8.Streams.4">
+                  <apmab:ApwnPlotwizardRule.ProgId>
+                    <s:String>WpfPLDISCURVES.RibbonPlotWizardMgr</s:String>
+                  </apmab:ApwnPlotwizardRule.ProgId>
+                </apmab:ApwnPlotwizardRule>
+              </atapmaa:ApwnFormScreenSubject.PlotwizardRule>
+            </atapmaa:ApwnFormScreenSubject>
+          </WorkspaceScreenData.ScreenSubject>
+          <WorkspaceScreenData.ScreenState>
+            <atapmaa:ApwnFormScreenState>
+              <atapmaa:ApwnFormScreenState.Parameters>
+                <cxv:CxvParameter Name="main" Value="Top.appModelV8.Streams.4" />
+                <cxv:CxvParameter Name="id" Value="4" />
+                <cxv:CxvParameter Name="extraComments_path" Value="Comments" />
+                <cxv:CxvParameter Name="extraDescription_path" Value="Input.DESCRIPTION" />
+                <cxv:CxvParameter Name="extraUnits_path" Value="Input.Unit Set" />
+                <cxv:CxvParameter Name="SpecOpt1" Value="Temperature" />
+                <cxv:CxvParameter Name="SpecOpt2" Value="Pressure" />
+                <cxv:CxvParameter Name="SUBSTRID" Value="MIXED" />
+              </atapmaa:ApwnFormScreenState.Parameters>
+            </atapmaa:ApwnFormScreenState>
+          </WorkspaceScreenData.ScreenState>
+        </WorkspaceScreenData>
+        <WorkspaceScreenData PaneName="ModelLibraryScreenFactoryKey" ScreenFactoryKey="ModelLibraryScreenFactoryKey">
+          <WorkspaceScreenData.ScreenState>
+            <ScreenState />
+          </WorkspaceScreenData.ScreenState>
+        </WorkspaceScreenData>
+        <WorkspaceScreenData PaneName="_AnonymousScreen3" ScreenFactoryKey="ApwnFormContentFactory">
+          <WorkspaceScreenData.ScreenSubject>
+            <atapmaa:ApwnFormScreenSubject Key="Streams.3.Results" NavigationGroupKey="Simulation">
+              <atapmaa:ApwnFormScreenSubject.ShowFormArgs>
+                <atapie:ShowFormEventArgs FormProgId="MMMATERIAL.MMMATERIAL_RESULT" FormKey="Streams.3.Results" Header="3 (MATERIAL) - Results" ResultsOnly="True" PathKey="Top.appModelV8.Streams.3">
+                  <atapie:ShowFormEventArgs.Parameters>
+                    <s:String assembly:Key="id">3</s:String>
+                    <s:Int32 assembly:Key="IsStream">1</s:Int32>
+                    <s:String assembly:Key="main">Top.appModelV8.Streams.3</s:String>
+                  </atapie:ShowFormEventArgs.Parameters>
+                </atapie:ShowFormEventArgs>
+              </atapmaa:ApwnFormScreenSubject.ShowFormArgs>
+              <atapmaa:ApwnFormScreenSubject.PlotwizardRule>
+                <apmab:ApwnPlotwizardRule ContextPath="Top.appModelV8.Streams.3">
+                  <apmab:ApwnPlotwizardRule.ProgId>
+                    <s:String>WpfPLDISCURVES.RibbonPlotWizardMgr</s:String>
+                  </apmab:ApwnPlotwizardRule.ProgId>
+                </apmab:ApwnPlotwizardRule>
+              </atapmaa:ApwnFormScreenSubject.PlotwizardRule>
+            </atapmaa:ApwnFormScreenSubject>
+          </WorkspaceScreenData.ScreenSubject>
+          <WorkspaceScreenData.ScreenState>
+            <atapmaa:ApwnFormScreenState>
+              <atapmaa:ApwnFormScreenState.Parameters>
+                <cxv:CxvParameter Name="IsStream">
+                  <cxv:CxvParameter.Value>
+                    <s:Int32>1</s:Int32>
+                  </cxv:CxvParameter.Value>
+                </cxv:CxvParameter>
+                <cxv:CxvParameter Name="main" Value="Top.appModelV8.Streams.3" />
+                <cxv:CxvParameter Name="id" Value="3" />
+                <cxv:CxvParameter Name="main_result" Value="@main.@parent.@parent" />
+                <cxv:CxvParameter Name="extraComments_path" Value="Comments" />
+                <cxv:CxvParameter Name="extraDescription_path" Value="Input.DESCRIPTION" />
+                <cxv:CxvParameter Name="extraUnits_path" Value="Input.Unit Set" />
+                <cxv:CxvParameter Name="selected_tab" Value="tab0" />
+              </atapmaa:ApwnFormScreenState.Parameters>
+            </atapmaa:ApwnFormScreenState>
+          </WorkspaceScreenData.ScreenState>
+        </WorkspaceScreenData>
+        <WorkspaceScreenData PaneName="_AnonymousScreen1" ScreenFactoryKey="ApwnFormContentFactory">
+          <WorkspaceScreenData.ScreenSubject>
+            <atapmaa:ApwnFormScreenSubject Key="Streams.2" NavigationGroupKey="Simulation">
+              <atapmaa:ApwnFormScreenSubject.ShowFormArgs>
+                <atapie:ShowFormEventArgs FormProgId="MMMATERIAL.MMMATERIAL_INPUT" FormKey="Streams.2" Header="2 (MATERIAL)" ResultsOnly="False" PathKey="Top.appModelV8.Streams.2">
+                  <atapie:ShowFormEventArgs.Parameters>
+                    <s:String assembly:Key="id">2</s:String>
+                    <s:String assembly:Key="main">Top.appModelV8.Streams.2</s:String>
+                  </atapie:ShowFormEventArgs.Parameters>
+                </atapie:ShowFormEventArgs>
+              </atapmaa:ApwnFormScreenSubject.ShowFormArgs>
+              <atapmaa:ApwnFormScreenSubject.PlotwizardRule>
+                <apmab:ApwnPlotwizardRule ContextPath="Top.appModelV8.Streams.2">
+                  <apmab:ApwnPlotwizardRule.ProgId>
+                    <s:String>WpfPLDISCURVES.RibbonPlotWizardMgr</s:String>
+                  </apmab:ApwnPlotwizardRule.ProgId>
+                </apmab:ApwnPlotwizardRule>
+              </atapmaa:ApwnFormScreenSubject.PlotwizardRule>
+            </atapmaa:ApwnFormScreenSubject>
+          </WorkspaceScreenData.ScreenSubject>
+          <WorkspaceScreenData.ScreenState>
+            <atapmaa:ApwnFormScreenState>
+              <atapmaa:ApwnFormScreenState.Parameters>
+                <cxv:CxvParameter Name="main" Value="Top.appModelV8.Streams.2" />
+                <cxv:CxvParameter Name="id" Value="2" />
+                <cxv:CxvParameter Name="extraComments_path" Value="Comments" />
+                <cxv:CxvParameter Name="extraDescription_path" Value="Input.DESCRIPTION" />
+                <cxv:CxvParameter Name="extraUnits_path" Value="Input.Unit Set" />
+                <cxv:CxvParameter Name="SpecOpt1" Value="Temperature" />
+                <cxv:CxvParameter Name="SpecOpt2" Value="Pressure" />
+                <cxv:CxvParameter Name="SUBSTRID" Value="MIXED" />
+              </atapmaa:ApwnFormScreenState.Parameters>
+            </atapmaa:ApwnFormScreenState>
+          </WorkspaceScreenData.ScreenState>
+        </WorkspaceScreenData>
+        <WorkspaceScreenData PaneName="_AnonymousScreen2" ScreenFactoryKey="ApwnFormContentFactory">
+          <WorkspaceScreenData.ScreenSubject>
+            <atapmaa:ApwnFormScreenSubject Key="Blocks.1.Parameters" NavigationGroupKey="Simulation">
+              <atapmaa:ApwnFormScreenSubject.ShowFormArgs>
+                <atapie:ShowFormEventArgs FormProgId="MMFORMSVCLIB.EOTAB" FormKey="Blocks.1.Parameters" Header="1 (CasterFlash) - Parameters" ResultsOnly="False" PathKey="Top.appModelV8.Blocks.1">
+                  <atapie:ShowFormEventArgs.Parameters>
+                    <s:Int32 assembly:Key="BrowseType">0</s:Int32>
+                    <s:Int32 assembly:Key="EOType">5</s:Int32>
+                    <s:String assembly:Key="id">1</s:String>
+                    <s:String assembly:Key="main">Top.appModelV8.Blocks.1</s:String>
+                    <s:Int32 assembly:Key="MMHelpCode">170</s:Int32>
+                    <s:String assembly:Key="MMHelpFile">EOConf.hlp</s:String>
+                  </atapie:ShowFormEventArgs.Parameters>
+                </atapie:ShowFormEventArgs>
+              </atapmaa:ApwnFormScreenSubject.ShowFormArgs>
+              <atapmaa:ApwnFormScreenSubject.PlotwizardRule>
+                <apmab:ApwnPlotwizardRule ContextPath="Top.appModelV8.Blocks.1" />
+              </atapmaa:ApwnFormScreenSubject.PlotwizardRule>
+            </atapmaa:ApwnFormScreenSubject>
+          </WorkspaceScreenData.ScreenSubject>
+          <WorkspaceScreenData.ScreenState>
+            <atapmaa:ApwnFormScreenState>
+              <atapmaa:ApwnFormScreenState.Parameters>
+                <cxv:CxvParameter Name="EOType">
+                  <cxv:CxvParameter.Value>
+                    <s:Int32>5</s:Int32>
+                  </cxv:CxvParameter.Value>
+                </cxv:CxvParameter>
+                <cxv:CxvParameter Name="BrowseType">
+                  <cxv:CxvParameter.Value>
+                    <s:Int32>0</s:Int32>
+                  </cxv:CxvParameter.Value>
+                </cxv:CxvParameter>
+                <cxv:CxvParameter Name="MMHelpCode">
+                  <cxv:CxvParameter.Value>
+                    <s:Int32>170</s:Int32>
+                  </cxv:CxvParameter.Value>
+                </cxv:CxvParameter>
+                <cxv:CxvParameter Name="MMHelpFile" Value="EOConf.hlp" />
+                <cxv:CxvParameter Name="main" Value="Top.appModelV8.Blocks.1" />
+                <cxv:CxvParameter Name="id" Value="1" />
+                <cxv:CxvParameter Name="extraComments_path" Value="Comments" />
+                <cxv:CxvParameter Name="extraDescription_path" Value="Input.DESCRIPTION" />
+                <cxv:CxvParameter Name="extraUnits_path" Value="Input.Unit Set" />
+              </atapmaa:ApwnFormScreenState.Parameters>
+            </atapmaa:ApwnFormScreenState>
+          </WorkspaceScreenData.ScreenState>
+        </WorkspaceScreenData>
+        <WorkspaceScreenData PaneName="ModelLibrariesManagerWindowKey" ScreenFactoryKey="ClosedScreenPlaceholder">
+          <WorkspaceScreenData.ScreenState>
+            <ScreenState />
+          </WorkspaceScreenData.ScreenState>
+        </WorkspaceScreenData>
+      </ShellWorkspace.Screens>
+    </ShellWorkspace>
+  </CommonShellSettings.CurrentWorkspace>
+  <CommonShellSettings.SavedWorkspaces>
+    <ShellWorkspaceFolder />
+  </CommonShellSettings.SavedWorkspaces>
+</CommonShellSettings>
+$_END_APWNSHELL_SETTINGS
+#
+PFSVData
+# of PFS Objects = 5
+SIZE -5.40373 0.906383 -0.506423 1.39787
+BLOCK
+ID: 1
+Version: 1
+ICON: "BLOCK"
+Flag 0
+Section GLOBAL
+At -1.200000 0.800000
+Label At 0.000000 0.000000
+Annotation At -0.450000 -0.550000
+Scale 1.000000 Modifier 0
+STREAM
+ID: 2
+Version: 2
+Flag 0
+TYPE 0 TERMINAL 1
+At -3.497873 1.397872
+Label At 0.461437 0.000000
+ROUTE 0 0
+$ $ 0.0 0.0
+ROUTE 1 0
+r r -3.497873 1.397872 0
+x x -2.575000 1.397872 0
+y y -2.575000 0.800000 0
+x x -1.850000 0.800000 0
+t l -1.650000 0.800000 0
+$ C 1.000000 0.0
+$ $ 0.0 0.0
+At 0.000000 0.000000
+Label At 0.000000 0.000000
+ROUTE 0 1
+$ $ 0.0 0.0
+ROUTE 1 1
+$ $ 0.0 0.0
+At 0.000000 0.000000
+Label At 0.000000 0.000000
+ROUTE 0 2
+$ $ 0.0 0.0
+ROUTE 1 2
+$ $ 0.0 0.0
+STREAM
+ID: 3
+Version: 2
+Flag 0
+TYPE 0 TERMINAL 2
+At 0.906383 0.797872
+Label At -0.415691 0.000000
+ROUTE 0 0
+r l 0.906383 0.797872 0
+x y 0.075000 0.797872 0
+y x 0.075000 0.800000 0
+x 0 -0.550000 0.800000 0
+t r -0.750000 0.800000 0
+$ C 1.000000 0.0
+$ $ 0.0 0.0
+ROUTE 1 0
+$ $ 0.0 0.0
+At 0.000000 0.000000
+Label At 0.000000 0.000000
+ROUTE 0 1
+$ $ 0.0 0.0
+ROUTE 1 1
+$ $ 0.0 0.0
+At 0.000000 0.000000
+Label At 0.000000 0.000000
+ROUTE 0 2
+$ $ 0.0 0.0
+ROUTE 1 2
+$ $ 0.0 0.0
+STREAM
+ID: 4
+Version: 2
+Flag 0
+TYPE 0 TERMINAL 1
+At -4.403727 -0.506423
+Label At 1.416226 0.650000
+ROUTE 0 0
+$ $ 0.0 0.0
+ROUTE 1 0
+r r -4.403727 -0.506423 0
+x x -4.050001 -0.506423 0
+y y -4.050001 0.143577 0
+x x -1.925000 0.143577 0
+y 0 -1.925000 0.800000 0
+x x -1.850000 0.800000 0
+t l -1.650000 0.800000 0
+$ C 1.000000 0.0
+$ $ 0.0 0.0
+At 0.000000 0.000000
+Label At 0.000000 0.000000
+ROUTE 0 1
+$ $ 0.0 0.0
+ROUTE 1 1
+$ $ 0.0 0.0
+At 0.000000 0.000000
+Label At 0.000000 0.000000
+ROUTE 0 2
+$ $ 0.0 0.0
+ROUTE 1 2
+$ $ 0.0 0.0
+LEGEND
+Version: 2
+Dim: -5.82238 -0.706339 -5.05549 -0.864255
+Size: 0.0127797
+Font: 1 0 =
+# of PFS Objects = 0
+VIEWPORT -7.240824 7.251375 3.301932 -1.592699
+LAYOUT
+TableFormat 1
+Pages 1 1 1 1
+PAGESETUP
+PAPERSIZE 
+PAPERSOURCE 
+ORIENTATION -1
+PRINTPAGENO 1 1
+LEFTMARGIN 10mm
+RIGHTMARGIN 10mm
+TOPMARGIN 10mm
+BOTTOMMARGIN 10mm
+VISIBILITY 0.030000
+PFDFLAG 255 255
+PFDMODE 0
+SCALE 0.012780
