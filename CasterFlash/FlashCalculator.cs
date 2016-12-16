@@ -73,16 +73,21 @@ namespace CasterFlash
         /// </summary>
         public override void OutputResult()
         {
-            ((CapeRealParameter)UnitOp.Results["T"]).value = product.T;
-            ((CapeRealParameter)UnitOp.Results["P"]).value = product.P;
-            ((CapeRealParameter)UnitOp.Results["Heatduty"]).value = product.Enthalpy;
+            ((CapeRealParameter)UnitOp.Results["TOut"]).value = product.T;
+            ((CapeRealParameter)UnitOp.Results["POut"]).value = product.P;
+            ((CapeRealParameter)UnitOp.Results["HeatdutyOut"]).value = product.Enthalpy;
             foreach (var m in feeds)
-                ((CapeRealParameter)UnitOp.Results["Heatduty"]).value -= m.Enthalpy;
-            ((CapeRealParameter)UnitOp.Results["VaporFraction"]).value = product.VaporFraction;
+                ((CapeRealParameter)UnitOp.Results["HeatdutyOut"]).value -= m.Enthalpy;
+            ((CapeRealParameter)UnitOp.Results["VaporFractionOut"]).value = product.VaporFraction;
 
-            ((CapeMaterialPort)UnitOp.Ports["product"]).Material
+            ((CapeMaterialPort)UnitOp.Ports["vapor"]).Material
                 .SetOverallTPFlowCompositionAndFlash(
-                product.T, product.P, product.TotalFlow, product.Composition);
+                    product.T, product.P, product.VaporMaterial.TotalFlow,
+                    product.VaporMaterial.TotalFlow == 0 ? product.Composition : product.VaporMaterial.Composition);
+            ((CapeMaterialPort)UnitOp.Ports["liquid"]).Material
+                .SetOverallTPFlowCompositionAndFlash(
+                    product.T, product.P, product.LiquidMaterial.TotalFlow,
+                    product.LiquidMaterial.TotalFlow == 0 ? product.Composition : product.LiquidMaterial.Composition);
         }
 
         #region IFlash
