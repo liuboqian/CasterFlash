@@ -1,0 +1,2644 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>CasterUnitCore</name>
+    </assembly>
+    <members>
+        <member name="T:CasterUnitCore.CapeCategoryAttribute">
+            <summary>
+            Label on UnitOp Operation, will add a category GUID at \CLSID\CapeDescription\CapeCategory
+            </summary>
+        </member>
+        <member name="T:CasterUnitCore.CapeHelpURLAttribute">
+            <summary>
+            Label on UnitOp Operation, will register at \CLSID\CapeDescription\HelpURL
+            </summary>
+        </member>
+        <member name="P:CasterUnitCore.CapeHelpURLAttribute.HelpURL">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:CasterUnitCore.CapeHelpURLAttribute.#ctor(System.String)">
+            <summary>
+            
+            </summary>
+            <paramCollection name="helpURL"></paramCollection>
+        </member>
+        <member name="T:CasterUnitCore.CapeAboutAttribute">
+            <summary>
+            Label on UnitOp Operation, will register at \CLSID\CapeDescription\About
+            </summary>
+        </member>
+        <member name="P:CasterUnitCore.CapeAboutAttribute.About">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:CasterUnitCore.CapeAboutAttribute.#ctor(System.String)">
+            <summary>
+            
+            </summary>
+            <paramCollection name="about"></paramCollection>
+        </member>
+        <member name="T:CasterUnitCore.CapeDescriptionAttribute">
+            <summary>
+            Label on UnitOp Operation, will register at \CLSID\CapeDescription\Description
+            </summary>
+        </member>
+        <member name="P:CasterUnitCore.CapeDescriptionAttribute.Description">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:CasterUnitCore.CapeDescriptionAttribute.#ctor(System.String)">
+            <summary>
+            
+            </summary>
+            <paramCollection name="description"></paramCollection>
+        </member>
+        <member name="T:CasterUnitCore.CapeVendorURLAttribute">
+            <summary>
+            Label on UnitOp Operation, will register at \CLSID\CapeDescription\VendorURL
+            </summary>
+        </member>
+        <member name="P:CasterUnitCore.CapeVendorURLAttribute.VendorURL">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:CasterUnitCore.CapeVendorURLAttribute.#ctor(System.String)">
+            <summary>
+            
+            </summary>
+            <paramCollection name="vendorURL"></paramCollection>
+        </member>
+        <member name="T:CasterUnitCore.CapeVersionAttribute">
+            <summary>
+            Label on UnitOp Operation, will register at \CLSID\CapeDescription\Version
+            </summary>
+        </member>
+        <member name="P:CasterUnitCore.CapeVersionAttribute.Version">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:CasterUnitCore.CapeVersionAttribute.#ctor(System.String)">
+            <summary>
+            
+            </summary>
+            <paramCollection name="version"></paramCollection>
+        </member>
+        <member name="T:CasterUnitCore.CapeNameAttribute">
+            <summary>
+            Label on UnitOp Operation, will register at \CLSID\CapeDescription\Name
+            </summary>
+        </member>
+        <member name="P:CasterUnitCore.CapeNameAttribute.Name">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:CasterUnitCore.CapeNameAttribute.#ctor(System.String)">
+            <summary>
+            
+            </summary>
+            <paramCollection name="name"></paramCollection>
+        </member>
+        <member name="T:CasterUnitCore.CapeCollection">
+            <summary>
+            This class contains a collection of ICapeIdentification, with a key default set to its name, and can also use index to locate item
+            </summary>
+        </member>
+        <member name="F:CasterUnitCore.CapeCollection._items">
+            <summary>
+            contains items with a key
+            </summary>
+        </member>
+        <member name="F:CasterUnitCore.CapeCollection._keys">
+            <summary>
+            contains keys in the order when it was added
+            </summary>
+        </member>
+        <member name="M:CasterUnitCore.CapeCollection.#ctor(System.String,System.String,System.Boolean)">
+            <summary>
+            IsReadOnly is default set to false
+            </summary>
+        </member>
+        <member name="P:CasterUnitCore.CapeCollection.Item(System.Int32)">
+            <summary>
+            return value by index, index starts from one!!! According to CO standard
+            </summary>
+            <paramCollection name="index">Start from one!!! int, not long</paramCollection>
+        </member>
+        <member name="P:CasterUnitCore.CapeCollection.Item(System.String)">
+            <summary>
+            return value by name
+            </summary>
+        </member>
+        <member name="M:CasterUnitCore.CapeCollection.GetItem(System.Int32)">
+            <summary>
+            return CapeCollectionPair by index
+            </summary>
+        </member>
+        <member name="M:CasterUnitCore.CapeCollection.Add(CasterUnitCore.CapeOpenBaseObject)">
+            <summary>
+            Add an item, the default key is ComponentName
+            </summary>
+        </member>
+        <member name="M:CasterUnitCore.CapeCollection.Add(System.String,CAPEOPEN.ICapeIdentification)">
+            <summary>
+            Add an item with a key
+            </summary>
+        </member>
+        <member name="M:CasterUnitCore.CapeCollection.Contains(CAPEOPEN.ICapeIdentification)">
+            <summary>
+            whether CapeCollection contains this item
+            </summary>
+        </member>
+        <member name="M:CasterUnitCore.CapeCollection.Contains(System.String)">
+            <summary>
+            whether CapeCollection contains item with this key
+            </summary>
+        </member>
+        <member name="M:CasterUnitCore.CapeCollection.Remove(System.String)">
+            <summary>
+            Remove item with this key
+            </summary>
+        </member>
+        <member name="M:CasterUnitCore.CapeCollection.Remove(CAPEOPEN.ICapeIdentification)">
+            <summary>
+            Remove the same item, should be reference equal
+            </summary>
+        </member>
+        <member name="M:CasterUnitCore.CapeCollection.GetValueArray">
+            <summary>
+            Return item array, without key
+            </summary>
+        </member>
+        <member name="M:CasterUnitCore.CapeCollection.Clone">
+            <summary>
+            if the item inside the CapeCollection is not CapeOpenBaseObject or never implement Clone(), the method will fail
+            </summary>
+        </member>
+        <member name="T:CasterUnitCore.CapeCollectionPair">
+            <summary>
+            Similar to KeyValuePair of Dictionary, the class is used to return pairs in CapeCollection
+            </summary>
+        </member>
+        <member name="F:CasterUnitCore.CapeCollectionPair.Key">
+            <summary>
+            Key of component in CapeCollection, a string
+            </summary>
+        </member>
+        <member name="F:CasterUnitCore.CapeCollectionPair.Value">
+            <summary>
+            Value of component in CapeCollection, a CapeOpenBaseObject
+            </summary>
+        </member>
+        <member name="M:CasterUnitCore.CapeCollectionPair.#ctor(System.String,CAPEOPEN.ICapeIdentification)">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:CasterUnitCore.CapeOpenBaseObject">
+            <summary>
+            This class is the base class of all CO component, default setting is canRename and name is "COComponent"
+            </summary>
+        </member>
+        <member name="F:CasterUnitCore.CapeOpenBaseObject.CanRename">
+            <summary>
+            whether the ComponentName can be modified, most simulator will change the name of unit, so dont set to false for unit operation
+            </summary>
+        </member>
+        <member name="M:CasterUnitCore.CapeOpenBaseObject.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:CasterUnitCore.CapeOpenBaseObject.#ctor(System.String,System.String,System.Boolean)">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:CasterUnitCore.CapeOpenBaseObject.ComponentDescription">
+            <summary>
+            Description of this component
+            </summary>
+        </member>
+        <member name="P:CasterUnitCore.CapeOpenBaseObject.ComponentName">
+            <summary>
+            Component Name, if canRename is false in the constructor, will raise an error if facing changes
+            </summary>
+        </member>
+        <member name="P:CasterUnitCore.CapeOpenBaseObject.Dirty">
+            <summary>
+            whether the component has been modified
+            </summary>
+        </member>
+        <member name="M:CasterUnitCore.CapeOpenBaseObject.Clone">
+            <summary>
+            Not Implemented, each derived class should override this
+            </summary>
+        </member>
+        <member name="T:CasterUnitCore.Calculator">
+            <summary>
+            This class is the base class for all calculate class, must be inherit, and should also inherit the specified unit calculate interface
+            </summary>
+        </member>
+        <member name="P:CasterUnitCore.Calculator.UnitOp">
+            <summary>
+            Reference to the concrete unit, to get Parameters and etc.
+            </summary>
+        </member>
+        <member name="M:CasterUnitCore.Calculator.#ctor">
+            <summary>
+            Create base SpecCalculator, create collections instance
+            </summary>
+        </member>
+        <member name="M:CasterUnitCore.Calculator.BeforeCalculate">
+            <summary>
+            Call before calculate
+            1 Get material throught Ports, MUST Duplicate, the port material cannot manipulate.
+            2 Get Parameters throught Parameters and Results
+            3 Must get the Parameters from collections here, cannot use the variable assigned in InitParameters
+            </summary>
+        </member>
+        <member name="M:CasterUnitCore.Calculator.Calculate">
+            <summary>
+            Actual calculate
+            </summary>
+        </member>
+        <member name="M:CasterUnitCore.Calculator.OutputResult">
+            <summary>
+            Call after calculate
+            Output result, set material to Ports, set results to Results, and clear up material
+            </summary>
+        </member>
+        <member name="M:CasterUnitCore.Calculator.Clone">
+            <summary>
+            In most case, this method is used to provide a duplicate Parameters to GUI, so just copy the Parameters and Results
+            </summary>
+        </member>
+        <member name="T:CasterUnitCore.CasterUnitOperationBase">
+            <summary>
+            Base class of unit operation, must be inherit
+            Parameter initialize and port initialize and calculation should be in this class
+            Genericity is not allowed, because of IPersist
+            </summary>
+        </member>
+        <member name="F:CasterUnitCore.CasterUnitOperationBase.Status">
+            <summary>
+            is unit valid
+            </summary>
+        </member>
+        <member name="F:CasterUnitCore.CasterUnitOperationBase._simulationContext">
+            <summary>
+            reference to simulationContext
+            </summary>
+        </member>
+        <member name="F:CasterUnitCore.CasterUnitOperationBase.Isloaded">
+            <summary>
+            whether the unit is loaded from file
+            </summary>
+        </member>
+        <member name="F:CasterUnitCore.CasterUnitOperationBase.GuiThread">
+            <summary>
+            new thread to show GUI, important for aspen
+            </summary>
+        </member>
+        <member name="P:CasterUnitCore.CasterUnitOperationBase.SpecCalculator">
+            <summary>
+            calculate instance, contains derived instance of SpecCalculator
+            </summary>
+        </member>
+        <member name="F:CasterUnitCore.CasterUnitOperationBase.Ports">
+            <summary>
+            Collection of ports connected to this unit
+            </summary>
+        </member>
+        <member name="F:CasterUnitCore.CasterUnitOperationBase.Parameters">
+            <summary>
+            Collection of Parameters, should be CAPE_INPUT or CAPE_INPUT_OUTPUT
+            </summary>
+        </member>
+        <member name="F:CasterUnitCore.CasterUnitOperationBase.Results">
+            <summary>
+            Collection of results, should be CAPE_OUTPUT Parameters, used to display results after calculation
+            </summary>
+        </member>
+        <member name="F:CasterUnitCore.CasterUnitOperationBase.unitId">
+            <summary>
+            Unique id of an instance, to identify the unit in CasterUnitLocator, default using Guid
+            </summary>
+        </member>
+        <member name="E:CasterUnitCore.CasterUnitOperationBase.OnInitialize">
+            <summary>
+            Called during Initialize
+            </summary>
+        </member>
+        <member name="E:CasterUnitCore.CasterUnitOperationBase.OnTerminate">
+            <summary>
+            Called during Terminate
+            </summary>
+        </member>
+        <member name="E:CasterUnitCore.CasterUnitOperationBase.OnGetParameters">
+            <summary>
+            Called when COSE ask for Parameters interface
+            </summary>
+        </member>
+        <member name="E:CasterUnitCore.CasterUnitOperationBase.OnGetPorts">
+            <summary>
+            Called when COSE ask for ports interface
+            </summary>
+        </member>
+        <member name="M:CasterUnitCore.CasterUnitOperationBase.#ctor(CasterUnitCore.Calculator,System.String,System.String)">
+            <summary>
+            This constructor assign SpecCalculator, create Ports, Parameters and Results and call their initialize method
+            </summary>
+            <paramCollection name="specCalculator">the specification calculate class</paramCollection>
+            <paramCollection name="className">name of this unit operation</paramCollection>
+            <paramCollection name="description">description of this unit operation</paramCollection>
+        </member>
+        <member name="M:CasterUnitCore.CasterUnitOperationBase.InitParameters">
+            <summary>
+            Add parameter to Parameters.
+            if you use some variable point to the variable in Parameters, they might change before BeforeCalculate
+            </summary>
+        </member>
+        <member name="M:CasterUnitCore.CasterUnitOperationBase.InitPorts">
+            <summary>
+            Add port to Ports
+            </summary>
+        </member>
+        <member name="M:CasterUnitCore.CasterUnitOperationBase.InitResults">
+            <summary>
+            Add result parameter to Results
+            </summary>
+        </member>
+        <member name="M:CasterUnitCore.CasterUnitOperationBase.ParamtersValidate(System.String@)">
+            <summary> 
+            Default action is to check whether all Parameters is valid, override to customize
+            </summary>
+        </member>
+        <member name="M:CasterUnitCore.CasterUnitOperationBase.PortsValidate(System.String@)">
+            <summary>
+            Default action is to check if an inlet and a outlet material is connected, override to customize
+            </summary>
+        </member>
+        <member name="M:CasterUnitCore.CasterUnitOperationBase.UpdateCompoundList">
+            <summary>
+            Called after the compound list is changed
+            </summary>
+        </member>
+        <member name="M:CasterUnitCore.CasterUnitOperationBase.Calculate">
+            <summary>
+            raw Calculate interface called by simulator, NO need to modify this
+            </summary>
+        </member>
+        <member name="M:CasterUnitCore.CasterUnitOperationBase.Validate(System.String@)">
+            <summary>
+            This method will call ParameterValidate and PortValidate, in most case, no need to override this, just override ParameterValidate and PortValidate
+            </summary>
+            <paramCollection name="message">return the combined error message</paramCollection>
+        </member>
+        <member name="P:CasterUnitCore.CasterUnitOperationBase.ports">
+            <summary>
+            raw ports interface called by simulator
+            </summary>
+        </member>
+        <member name="P:CasterUnitCore.CasterUnitOperationBase.ValStatus">
+            <summary>
+            raw ValStatus interface called by simulator
+            </summary>
+        </member>
+        <member name="M:CasterUnitCore.CasterUnitOperationBase.Initialize">
+            <summary>
+            raw Initialize interface called by simulator, do nothing but write a debug message
+            </summary>
+        </member>
+        <member name="M:CasterUnitCore.CasterUnitOperationBase.Terminate">
+            <summary>
+            raw Terminate interface called by simulator, release COM object write a debug message
+            </summary>
+        </member>
+        <member name="M:CasterUnitCore.CasterUnitOperationBase.Edit">
+            <summary>
+            raw Edit interface called by simulator, create a new thread to display GUI
+            </summary>
+        </member>
+        <member name="M:CasterUnitCore.CasterUnitOperationBase.OpenEditWindow">
+            <summary>
+            This method will open the edit window in STA mode
+            if you want to open your custom window, override this method
+            After your window closed, MUST abort GuiThread!!!
+            </summary>
+        </member>
+        <member name="P:CasterUnitCore.CasterUnitOperationBase.parameters">
+            <summary>
+            raw Parameters interface called by simulator
+            </summary>
+        </member>
+        <member name="P:CasterUnitCore.CasterUnitOperationBase.simulationContext">
+            <summary>
+            set and get simulationContext interface passed by simulator
+            </summary>
+        </member>
+        <member name="M:CasterUnitCore.CasterUnitOperationBase.GetClassID(System.Guid@)">
+            <summary>
+            return CLSID
+            </summary>
+            <paramCollection name="pClassID"></paramCollection>
+        </member>
+        <member name="M:CasterUnitCore.CasterUnitOperationBase.IsDirty">
+            <summary>
+            whether the unit has been modified, raw interface
+            </summary>
+        </member>
+        <member name="M:CasterUnitCore.CasterUnitOperationBase.GetSizeMax(System.Int64@)">
+            <summary>
+            Get Total size of saving
+            </summary>
+        </member>
+        <member name="M:CasterUnitCore.CasterUnitOperationBase.Save(System.Runtime.InteropServices.ComTypes.IStream,System.Boolean)">
+            <summary>
+            Save ComponentName,ComponentDescription,Parameters,Results,Ports
+            </summary>
+        </member>
+        <member name="M:CasterUnitCore.CasterUnitOperationBase.Load(System.Runtime.InteropServices.ComTypes.IStream)">
+            <summary>
+            Load ComponentName,ComponentDescription,Parameters,Results,Ports
+            </summary>
+        </member>
+        <member name="M:CasterUnitCore.CasterUnitOperationBase.RegisterFunction(System.Type)">
+            <summary>
+            register function, no need to modify, the information will get through the Attribute of UnitOp class
+            </summary>
+            <paramCollection name="t"></paramCollection>
+        </member>
+        <member name="M:CasterUnitCore.CasterUnitOperationBase.UnRegisterFunction(System.Type)">
+            <summary>
+            Unregister function
+            </summary>
+            <paramCollection name="t"></paramCollection>
+        </member>
+        <member name="T:CasterUnitCore.ECapeUnknownException">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:CasterUnitCore.ECapeUnknownException.#ctor(CasterUnitCore.CapeOpenBaseObject,System.Exception,System.String)">
+            <summary>
+            create a cape unknown exception by .net exception, obj should be the unit which throw the exception, in most case, it's UnitOp
+            </summary>
+            <paramCollection name="message"></paramCollection>
+            <paramCollection name="inner"></paramCollection>
+        </member>
+        <member name="M:CasterUnitCore.ECapeUnknownException.#ctor(CasterUnitCore.CapeOpenBaseObject,System.String,System.String)">
+            <summary>
+            create an cape unknown exception, obj should be the unit which throw the exception, in most case, it's UnitOp
+            </summary>
+            <paramCollection name="message"></paramCollection>
+        </member>
+        <member name="M:CasterUnitCore.ECapeUnknownException.#ctor(System.String)">
+            <summary>
+            throw an error, will create an empty CapeCollection to throw this exception
+            </summary>
+        </member>
+        <member name="P:CasterUnitCore.ECapeUnknownException.code">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:CasterUnitCore.ECapeUnknownException.description">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:CasterUnitCore.ECapeUnknownException.scope">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:CasterUnitCore.ECapeUnknownException.interfaceName">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:CasterUnitCore.ECapeUnknownException.operation">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:CasterUnitCore.ECapeUnknownException.moreInfo">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:CasterUnitCore.ECapeUnknownException.name">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:CasterUnitCore.ParameterModel.Name">
+            <summary>
+            Name shown in GUI
+            </summary>
+        </member>
+        <member name="P:CasterUnitCore.ParameterModel.CurrentValue">
+            <summary>
+            value shown in GUI, will convert to CurrentUnit
+            </summary>
+        </member>
+        <member name="P:CasterUnitCore.ParameterModel.CurrentUnit">
+            <summary>
+            Unit shown in GUI, when unit is changed and mode is CAPE_INPUT, the value of parameter will change
+            if you dont want the actual value changes with unit, use CAPE_INPUT_OUTPUT to avoid actual value change
+            </summary>
+        </member>
+        <member name="P:CasterUnitCore.ParameterModel.CurrentUnitsList">
+            <summary>
+            unit list, get from Units class
+            </summary>
+        </member>
+        <member name="P:CasterUnitCore.ParameterModel.OptionList">
+            <summary>
+            Options shown in GUI
+            </summary>
+        </member>
+        <member name="T:CasterUnitCore.ParameterWindow">
+            <summary>
+            An auto Parameters window, made by wpf
+            </summary>
+            <summary>
+            ParameterWindow
+            </summary>
+        </member>
+        <member name="M:CasterUnitCore.ParameterWindow.#ctor(CasterUnitCore.CasterUnitOperationBase,CasterUnitCore.CapeCollection,CasterUnitCore.CapeCollection)">
+            <summary>
+            
+            </summary>
+            <paramCollection name="unit">reference to unit, just to get its name for now</paramCollection>
+            <paramCollection name="Parameters">Parameters, better be a clone</paramCollection>
+            <paramCollection name="results">results</paramCollection>
+        </member>
+        <member name="M:CasterUnitCore.ParameterWindow.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="M:CasterUnitCore.ViewModelLocator.#ctor">
+            <summary>
+            Initializes a new instance of the ViewModelLocator class.
+            </summary>
+        </member>
+        <member name="P:CasterUnitCore.ViewModelLocator.Main">
+            <summary>
+            Gets the Main property which defines the main viewmodel.
+            </summary>
+        </member>
+        <member name="T:CasterUnitCore.IPersistStream">
+            <summary>
+            This interface cannot be import through PIA for some reason
+            </summary>
+        </member>
+        <member name="M:CasterUnitCore.IPersistStream.GetClassID(System.Guid@)">
+            <summary>
+            
+            </summary>
+            <paramCollection name="pClassID"></paramCollection>
+        </member>
+        <member name="M:CasterUnitCore.IPersistStream.IsDirty">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CasterUnitCore.IPersistStream.Load(System.Runtime.InteropServices.ComTypes.IStream)">
+            <summary>
+            
+            </summary>
+            <paramCollection name="pStm"></paramCollection>
+        </member>
+        <member name="M:CasterUnitCore.IPersistStream.Save(System.Runtime.InteropServices.ComTypes.IStream,System.Boolean)">
+            <summary>
+            
+            </summary>
+            <paramCollection name="pStm"></paramCollection>
+            <paramCollection name="fClearDirty"></paramCollection>
+        </member>
+        <member name="M:CasterUnitCore.IPersistStream.GetSizeMax(System.Int64@)">
+            <summary>
+            
+            </summary>
+            <paramCollection name="pcbSize"></paramCollection>
+        </member>
+        <member name="T:CasterUnitCore.CapeArrayParameter">
+            <summary>
+            A one dimensional matrix parameter, implement ICapeArrayParameterSpec, can not work for any simulator, if you have any clue, please contact me
+            </summary>
+        </member>
+        <member name="M:CasterUnitCore.CapeArrayParameter.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:CasterUnitCore.CapeArrayParameter.#ctor(System.String,CAPEOPEN.CapeParamMode)">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:CasterUnitCore.CapeArrayParameter.Validate(System.String@)">
+            <summary>
+            Check for valid status for each item
+            </summary>
+        </member>
+        <member name="M:CasterUnitCore.CapeArrayParameter.Validate">
+            <summary>
+            is all item valid
+            </summary>
+        </member>
+        <member name="M:CasterUnitCore.CapeArrayParameter.Reset">
+            <summary>
+            Clear All
+            </summary>
+        </member>
+        <member name="P:CasterUnitCore.CapeArrayParameter.value">
+            <summary>
+            return value, doesn't work, dont know why
+            </summary>
+        </member>
+        <member name="M:CasterUnitCore.CapeArrayParameter.Validate(System.Object,System.Object@)">
+            <summary>
+            Validate a value
+            </summary>
+        </member>
+        <member name="P:CasterUnitCore.CapeArrayParameter.NumDimensions">
+            <summary>
+            return numbers of dimensions, array only have 1 dimension
+            </summary>
+        </member>
+        <member name="P:CasterUnitCore.CapeArrayParameter.Size">
+            <summary>
+            return numbers of elements
+            </summary>
+        </member>
+        <member name="P:CasterUnitCore.CapeArrayParameter.ItemsSpecifications">
+            <summary>
+            return value as object array
+            </summary>
+        </member>
+        <member name="T:CasterUnitCore.CapeBooleanParameter">
+            <summary>
+            bool parameter, implemented ICapeBooleanParameterSpec, can compare to bool, can be implicit convert to bool
+            </summary>
+        </member>
+        <member name="M:CasterUnitCore.CapeBooleanParameter.#ctor">
+            <summary>
+            default value is false, default name is "booleanParameter"
+            </summary>
+        </member>
+        <member name="M:CasterUnitCore.CapeBooleanParameter.#ctor(System.String,System.Boolean,CAPEOPEN.CapeParamMode)">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:CasterUnitCore.CapeBooleanParameter.Validate(System.String@)">
+            <summary>
+            bool paramCollection is always valid
+            </summary>
+        </member>
+        <member name="M:CasterUnitCore.CapeBooleanParameter.Validate">
+            <summary>
+            bool paramCollection is always valid
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CasterUnitCore.CapeBooleanParameter.Reset">
+            <summary>
+            reset to the default value, and status set to CAPE_NOT_VALIDATED
+            </summary>
+        </member>
+        <member name="P:CasterUnitCore.CapeBooleanParameter.value">
+            <summary>
+            return bool value, can be set with string or bool or ICapeBooleanParameterSpec
+            </summary>
+        </member>
+        <member name="M:CasterUnitCore.CapeBooleanParameter.Validate(System.Boolean,System.String@)">
+            <summary>
+            bool paramCollection is always valid
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:CasterUnitCore.CapeBooleanParameter.DefaultValue">
+            <summary>
+            Default value
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CasterUnitCore.CapeBooleanParameter.op_Implicit(CasterUnitCore.CapeBooleanParameter)~System.Boolean">
+            <summary>
+            can be used as bool, I hope this will not be confusing
+            </summary>
+        </member>
+        <member name="T:CasterUnitCore.CapeIntParameter">
+            <summary>
+            Int parameter, don't have an unit, can compare to int
+            </summary>
+        </member>
+        <member name="M:CasterUnitCore.CapeIntParameter.#ctor">
+            <summary>
+            dafault name is "intParameter", and mode is CAPE_INPUT_OUTPUT
+            </summary>
+        </member>
+        <member name="M:CasterUnitCore.CapeIntParameter.#ctor(System.String,CAPEOPEN.CapeParamMode,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:CasterUnitCore.CapeIntParameter.Validate(System.String@)">
+            <summary>
+            
+            </summary>
+            <paramCollection name="message"></paramCollection>
+            <returns></returns>
+        </member>
+        <member name="M:CasterUnitCore.CapeIntParameter.Validate">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CasterUnitCore.CapeIntParameter.Reset">
+            <summary>
+            set to default value
+            </summary>
+        </member>
+        <member name="P:CasterUnitCore.CapeIntParameter.value">
+            <summary>
+            get or set, can be set with int, string, ICapeIntegerParameterSpec
+            </summary>
+        </member>
+        <member name="M:CasterUnitCore.CapeIntParameter.Validate(System.Int32,System.String@)">
+            <summary>
+            Check if the value is in LowerBound and UpperBound
+            </summary>
+            <paramCollection name="value"></paramCollection>
+            <paramCollection name="message"></paramCollection>
+            <returns></returns>
+        </member>
+        <member name="P:CasterUnitCore.CapeIntParameter.DefaultValue">
+            <summary>
+            default value
+            </summary>
+        </member>
+        <member name="P:CasterUnitCore.CapeIntParameter.LowerBound">
+            <summary>
+            lower boundary
+            </summary>
+        </member>
+        <member name="P:CasterUnitCore.CapeIntParameter.UpperBound">
+            <summary>
+            upper boundary
+            </summary>
+        </member>
+        <member name="M:CasterUnitCore.CapeIntParameter.op_Equality(CasterUnitCore.CapeIntParameter,CAPEOPEN.ICapeIntegerParameterSpec)">
+            <summary>
+            
+            </summary>
+            <paramCollection name="thisParameter"></paramCollection>
+            <paramCollection name="other"></paramCollection>
+            <returns></returns>
+        </member>
+        <member name="M:CasterUnitCore.CapeIntParameter.op_Inequality(CasterUnitCore.CapeIntParameter,CAPEOPEN.ICapeIntegerParameterSpec)">
+            <summary>
+            
+            </summary>
+            <paramCollection name="thisParameter"></paramCollection>
+            <paramCollection name="other"></paramCollection>
+            <returns></returns>
+        </member>
+        <member name="M:CasterUnitCore.CapeIntParameter.op_Equality(CasterUnitCore.CapeIntParameter,System.Int32)">
+            <summary>
+            
+            </summary>
+            <paramCollection name="thisParameter"></paramCollection>
+            <paramCollection name="other"></paramCollection>
+            <returns></returns>
+        </member>
+        <member name="M:CasterUnitCore.CapeIntParameter.op_Inequality(CasterUnitCore.CapeIntParameter,System.Int32)">
+            <summary>
+            
+            </summary>
+            <paramCollection name="thisParameter"></paramCollection>
+            <paramCollection name="other"></paramCollection>
+            <returns></returns>
+        </member>
+        <member name="M:CasterUnitCore.CapeIntParameter.op_Implicit(CasterUnitCore.CapeIntParameter)~System.Int32">
+            <summary>
+            can be convert to int
+            </summary>
+            <paramCollection name="intParameter"></paramCollection>
+            <returns></returns>
+        </member>
+        <member name="T:CasterUnitCore.CapeMatrixParameter">
+            <summary>
+            matrix Parameters, can have multi dimensions, can not work for any simulator, if you have any clue, please contact me
+            </summary>
+        </member>
+        <member name="M:CasterUnitCore.CapeMatrixParameter.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:CasterUnitCore.CapeMatrixParameter.#ctor(System.String,CAPEOPEN.CapeParamMode)">
+            <summary>
+            
+            </summary>
+            <paramCollection name="name"></paramCollection>
+            <paramCollection name="mode"></paramCollection>
+        </member>
+        <member name="M:CasterUnitCore.CapeMatrixParameter.Validate(System.String@)">
+            <summary>
+            Check for valid status for each item
+            </summary>
+        </member>
+        <member name="M:CasterUnitCore.CapeMatrixParameter.Validate">
+            <summary>
+            Check for valid status for each item
+            </summary>
+        </member>
+        <member name="M:CasterUnitCore.CapeMatrixParameter.Reset">
+            <summary>
+            Clear All
+            </summary>
+        </member>
+        <member name="P:CasterUnitCore.CapeMatrixParameter.value">
+            <summary>
+            return value, cannot work
+            </summary>
+        </member>
+        <member name="M:CasterUnitCore.CapeMatrixParameter.Validate(System.Object,System.Object@)">
+            <summary>
+            
+            </summary>
+            <paramCollection name="value"></paramCollection>
+            <paramCollection name="message"></paramCollection>
+            <returns></returns>
+        </member>
+        <member name="P:CasterUnitCore.CapeMatrixParameter.NumDimensions">
+            <summary>
+            return numbers of dimensions
+            </summary>
+        </member>
+        <member name="P:CasterUnitCore.CapeMatrixParameter.Size">
+            <summary>
+            return an array contains size of each dimension
+            </summary>
+        </member>
+        <member name="P:CasterUnitCore.CapeMatrixParameter.ItemsSpecifications">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:CasterUnitCore.CapeOptionParameter">
+            <summary>
+            Option Parameters, can be initialize by enum, can compare to string or enum
+            </summary>
+        </member>
+        <member name="F:CasterUnitCore.CapeOptionParameter.enumTypeName">
+            <summary>
+            This string is used to deserialize enumType, only used when serialize and deserialize, no need to concern in other time.
+            </summary>
+        </member>
+        <member name="F:CasterUnitCore.CapeOptionParameter.assemblyName">
+            <summary>
+            used to retrive assembly and get type
+            </summary>
+        </member>
+        <member name="M:CasterUnitCore.CapeOptionParameter.#ctor">
+            <summary>
+            default name is "optionParameter" without any option
+            </summary>
+        </member>
+        <member name="M:CasterUnitCore.CapeOptionParameter.#ctor(System.String,System.Collections.Generic.IEnumerable{System.String},CAPEOPEN.CapeParamMode,System.String,System.Boolean)">
+            <summary>
+            use string array to initialize, better use enum
+            </summary>
+        </member>
+        <member name="M:CasterUnitCore.CapeOptionParameter.#ctor(System.String,System.Type,CAPEOPEN.CapeParamMode,System.Enum,System.Boolean)">
+            <summary>
+            Highly Recommended! Use a enum type to initialize this parameter
+            </summary>
+        </member>
+        <member name="M:CasterUnitCore.CapeOptionParameter.Validate(System.String@)">
+            <summary>
+            Check whether the value must be restricted to list and the option is not in the list
+            </summary>
+            <paramCollection name="message"></paramCollection>
+            <returns></returns>
+        </member>
+        <member name="M:CasterUnitCore.CapeOptionParameter.Validate">
+            <summary>
+            Check whether the value must be restricted to list and the option is not in the list
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CasterUnitCore.CapeOptionParameter.Reset">
+            <summary>
+            reset value to default value
+            </summary>
+        </member>
+        <member name="P:CasterUnitCore.CapeOptionParameter.value">
+            <summary>
+            accept string or enum or ICapeOptionParameterSpec
+            </summary>
+        </member>
+        <member name="M:CasterUnitCore.CapeOptionParameter.Validate(System.String,System.String@)">
+            <summary>
+            Check whether the value must be restricted to list and the option is not in the list
+            </summary>
+        </member>
+        <member name="P:CasterUnitCore.CapeOptionParameter.OptionList">
+            <summary>
+            get and set option list
+            </summary>
+        </member>
+        <member name="P:CasterUnitCore.CapeOptionParameter.DefaultValue">
+            <summary>
+            default value
+            </summary>
+        </member>
+        <member name="P:CasterUnitCore.CapeOptionParameter.RestrictedToList">
+            <summary>
+            whether the value can be outside of option list
+            </summary>
+        </member>
+        <member name="M:CasterUnitCore.CapeOptionParameter.op_Equality(CasterUnitCore.CapeOptionParameter,System.String)">
+            <summary>
+            
+            </summary>
+            <paramCollection name="thisParameter"></paramCollection>
+            <paramCollection name="other"></paramCollection>
+            <returns></returns>
+        </member>
+        <member name="M:CasterUnitCore.CapeOptionParameter.op_Inequality(CasterUnitCore.CapeOptionParameter,System.String)">
+            <summary>
+            
+            </summary>
+            <paramCollection name="thisParameter"></paramCollection>
+            <paramCollection name="other"></paramCollection>
+            <returns></returns>
+        </member>
+        <member name="M:CasterUnitCore.CapeOptionParameter.op_Equality(CasterUnitCore.CapeOptionParameter,CAPEOPEN.ICapeOptionParameterSpec)">
+            <summary>
+            
+            </summary>
+            <paramCollection name="thisParameter"></paramCollection>
+            <paramCollection name="other"></paramCollection>
+            <returns></returns>
+        </member>
+        <member name="M:CasterUnitCore.CapeOptionParameter.op_Inequality(CasterUnitCore.CapeOptionParameter,CAPEOPEN.ICapeOptionParameterSpec)">
+            <summary>
+            
+            </summary>
+            <paramCollection name="thisParameter"></paramCollection>
+            <paramCollection name="other"></paramCollection>
+            <returns></returns>
+        </member>
+        <member name="M:CasterUnitCore.CapeOptionParameter.op_Equality(CasterUnitCore.CapeOptionParameter,System.Enum)">
+            <summary>
+            
+            </summary>
+            <paramCollection name="thisParameter"></paramCollection>
+            <paramCollection name="other"></paramCollection>
+            <returns></returns>
+        </member>
+        <member name="M:CasterUnitCore.CapeOptionParameter.op_Inequality(CasterUnitCore.CapeOptionParameter,System.Enum)">
+            <summary>
+            
+            </summary>
+            <paramCollection name="thisParameter"></paramCollection>
+            <paramCollection name="other"></paramCollection>
+            <returns></returns>
+        </member>
+        <member name="M:CasterUnitCore.CapeOptionParameter.op_Implicit(CasterUnitCore.CapeOptionParameter)~System.String">
+            <summary>
+            convert to string
+            </summary>
+            <paramCollection name="optionParameter"></paramCollection>
+            <returns></returns>
+        </member>
+        <member name="M:CasterUnitCore.CapeOptionParameter.op_Implicit(CasterUnitCore.CapeOptionParameter)~System.Enum">
+            <summary>
+            convert to Enum
+            </summary>
+            <paramCollection name="optionParameter"></paramCollection>
+            <returns></returns>
+        </member>
+        <member name="M:CasterUnitCore.CapeOptionParameter.ConvertEnumType2String(System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Called on Serializing, save the enumType as string, don't call this method 
+            </summary>
+        </member>
+        <member name="M:CasterUnitCore.CapeOptionParameter.ConvertString2EnumType(System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Called on DeSerializing, restore the enumType by string, don't call this method 
+            </summary>
+        </member>
+        <member name="T:CasterUnitCore.CapeParameterBase">
+            <summary>
+            Common base class of Parameters
+            </summary>
+        </member>
+        <member name="M:CasterUnitCore.CapeParameterBase.#ctor">
+            <summary>
+            default name is "parameter", default type is CAPE_REAL
+            </summary>
+        </member>
+        <member name="M:CasterUnitCore.CapeParameterBase.#ctor(System.String,CAPEOPEN.CapeParamType,CAPEOPEN.CapeParamMode,CasterUnitCore.UnitCategoryEnum)">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:CasterUnitCore.CapeParameterBase.Validate(System.String@)">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:CasterUnitCore.CapeParameterBase.Validate">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:CasterUnitCore.CapeParameterBase.Reset">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:CasterUnitCore.CapeParameterBase.Specification">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:CasterUnitCore.CapeParameterBase.value">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:CasterUnitCore.CapeParameterBase.ValStatus">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:CasterUnitCore.CapeParameterBase.Mode">
+            <summary>
+            mode of this parameter, in most case, Parameters contains input parameter, Results contains output parameter
+            </summary>
+        </member>
+        <member name="P:CasterUnitCore.CapeParameterBase.Type">
+            <summary>
+            type of this parameter
+            </summary>
+        </member>
+        <member name="P:CasterUnitCore.CapeParameterBase.Dimensionality">
+            <summary>
+            return physical dimension of this parameter, in most case it was get through Units class
+            </summary>
+        </member>
+        <member name="T:CasterUnitCore.CapeRealParameter">
+            <summary>
+            Real parameter, have a unit, can compare to double
+            </summary>
+        </member>
+        <member name="F:CasterUnitCore.CapeRealParameter.CurrentUnitCategory">
+            <summary>
+            represent unit category, like temperature
+            </summary>
+        </member>
+        <member name="P:CasterUnitCore.CapeRealParameter.CurrentUnit">
+            <summary>
+            In default GUI, when unit is changed and mode is CAPE_INPUT, the value of parameter will change
+            if you dont want the actual value changes with unit, use CAPE_INPUT_OUTPUT to avoid actual value change
+            </summary>
+        </member>
+        <member name="M:CasterUnitCore.CapeRealParameter.#ctor">
+            <summary>
+            default name is "realParameter"
+            </summary>
+        </member>
+        <member name="M:CasterUnitCore.CapeRealParameter.#ctor(System.String,CasterUnitCore.UnitCategoryEnum,CAPEOPEN.CapeParamMode,System.Double,System.Double,System.Double)">
+            <summary>
+            real parameter
+            </summary>
+            <paramCollection name="unitCategory">unit type</paramCollection>
+            <paramCollection name="mode">if set to Input, the value won't change with unit in default window</paramCollection>
+        </member>
+        <member name="P:CasterUnitCore.CapeRealParameter.value">
+            <summary>
+            SI value, can be set to double, string, ICapeRealParameterSpec
+            </summary>
+        </member>
+        <member name="M:CasterUnitCore.CapeRealParameter.Validate">
+            <summary>
+            whether the value is a number and inside range
+            </summary>
+        </member>
+        <member name="P:CasterUnitCore.CapeRealParameter.DefaultValue">
+            <summary>
+            default value
+            </summary>
+        </member>
+        <member name="P:CasterUnitCore.CapeRealParameter.LowerBound">
+            <summary>
+            lower boundary
+            </summary>
+        </member>
+        <member name="P:CasterUnitCore.CapeRealParameter.UpperBound">
+            <summary>
+            upper boundary
+            </summary>
+        </member>
+        <member name="M:CasterUnitCore.CapeRealParameter.Validate(System.Double,System.String@)">
+            <summary>
+            whether the value is a number and inside range
+            </summary>
+        </member>
+        <member name="M:CasterUnitCore.CapeRealParameter.op_Equality(CasterUnitCore.CapeRealParameter,CAPEOPEN.ICapeRealParameterSpec)">
+            <summary>
+            
+            </summary>
+            <paramCollection name="thisParameter"></paramCollection>
+            <paramCollection name="other"></paramCollection>
+            <returns></returns>
+        </member>
+        <member name="M:CasterUnitCore.CapeRealParameter.op_Inequality(CasterUnitCore.CapeRealParameter,CAPEOPEN.ICapeRealParameterSpec)">
+            <summary>
+            
+            </summary>
+            <paramCollection name="thisParameter"></paramCollection>
+            <paramCollection name="other"></paramCollection>
+            <returns></returns>
+        </member>
+        <member name="M:CasterUnitCore.CapeRealParameter.op_Equality(CasterUnitCore.CapeRealParameter,System.Double)">
+            <summary>
+            
+            </summary>
+            <paramCollection name="thisParameter"></paramCollection>
+            <paramCollection name="other"></paramCollection>
+            <returns></returns>
+        </member>
+        <member name="M:CasterUnitCore.CapeRealParameter.op_Inequality(CasterUnitCore.CapeRealParameter,System.Double)">
+            <summary>
+            
+            </summary>
+            <paramCollection name="thisParameter"></paramCollection>
+            <paramCollection name="other"></paramCollection>
+            <returns></returns>
+        </member>
+        <member name="M:CasterUnitCore.CapeRealParameter.op_Implicit(CasterUnitCore.CapeRealParameter)~System.Double">
+            <summary>
+            can convert to double
+            </summary>
+            <paramCollection name="realParameter"></paramCollection>
+            <returns></returns>
+        </member>
+        <member name="T:CasterUnitCore.Units">
+            <summary>
+            UnitOp relate, get unit list, convert between units
+            </summary>
+        </member>
+        <member name="M:CasterUnitCore.Units.#cctor">
+            <summary>
+            load XMLDocument contains units, use GetManifestResourceStream("CasterUnitCore.Parameters.unit.xml")
+            </summary>
+        </member>
+        <member name="M:CasterUnitCore.Units.GetUnitList(CasterUnitCore.UnitCategoryEnum)">
+            <summary>
+            Get unit list of specified category
+            </summary>
+        </member>
+        <member name="M:CasterUnitCore.Units.UnitConvert(System.String,System.Double,System.String,CasterUnitCore.UnitCategoryEnum)">
+            <summary>
+            Convert from origin unit to destination unit
+            </summary>
+        </member>
+        <member name="M:CasterUnitCore.Units.ConvertToSI(System.Double,System.String,CasterUnitCore.UnitCategoryEnum)">
+            <summary>
+            Convert a value from its origin unit to SI unit
+            </summary>
+        </member>
+        <member name="M:CasterUnitCore.Units.ConvertFromSI(System.String,System.Double,CasterUnitCore.UnitCategoryEnum)">
+            <summary>
+            Convert a value from its SI unit to destination unit
+            </summary>
+        </member>
+        <member name="M:CasterUnitCore.Units.GetSIUnit(CasterUnitCore.UnitCategoryEnum)">
+            <summary>
+            Get SI unit
+            </summary>
+        </member>
+        <member name="M:CasterUnitCore.Units.GetDimensionality(CasterUnitCore.UnitCategoryEnum)">
+            <summary>
+            Get physical dimensionality, contains 8 number, represent in order Length|Mass|Time|ElectricalCurrent|Temperature|AmountOfSubstance|Luminous|Currency
+            </summary>
+        </member>
+        <member name="M:CasterUnitCore.Units.GetUnitCategory(System.String)">
+            <summary>
+            Get a unit category through name, not practical for now
+            </summary>
+        </member>
+        <member name="T:CasterUnitCore.UnitCategoryEnum">
+            <summary>
+            Enumeration of unit categories
+            </summary>
+        </member>
+        <member name="T:CasterUnitCore.UBinder">
+            <summary>
+            To make IPersist available to all assembly
+            </summary>
+        </member>
+        <member name="T:CasterUnitCore.Annotations.CanBeNullAttribute">
+            <summary>
+            Indicates that the value of the marked element could be <c>null</c> sometimes,
+            so the check for <c>null</c> is necessary before its usage.
+            </summary>
+            <example><code>
+            [CanBeNull] object Test() => null;
+            
+            void UseTest() {
+              var p = Test();
+              var s = p.ToString(); // Warning: Possible 'System.NullReferenceException'
+            }
+            </code></example>
+        </member>
+        <member name="T:CasterUnitCore.Annotations.NotNullAttribute">
+            <summary>
+            Indicates that the value of the marked element could never be <c>null</c>.
+            </summary>
+            <example><code>
+            [NotNull] object Foo() {
+              return null; // Warning: Possible 'null' assignment
+            }
+            </code></example>
+        </member>
+        <member name="T:CasterUnitCore.Annotations.ItemNotNullAttribute">
+            <summary>
+            Can be appplied to symbols of types derived from IEnumerable as well as to symbols of Task
+            and Lazy classes to indicate that the value of a collection item, of the Task.Result property
+            or of the Lazy.Value property can never be null.
+            </summary>
+        </member>
+        <member name="T:CasterUnitCore.Annotations.ItemCanBeNullAttribute">
+            <summary>
+            Can be appplied to symbols of types derived from IEnumerable as well as to symbols of Task
+            and Lazy classes to indicate that the value of a collection item, of the Task.Result property
+            or of the Lazy.Value property can be null.
+            </summary>
+        </member>
+        <member name="T:CasterUnitCore.Annotations.StringFormatMethodAttribute">
+            <summary>
+            Indicates that the marked method builds string by format pattern and (optional) arguments.
+            Parameter, which contains format string, should be given in constructor. The format string
+            should be in <see cref="M:System.String.Format(System.IFormatProvider,System.String,System.Object[])"/>-like form.
+            </summary>
+            <example><code>
+            [StringFormatMethod("message")]
+            void ShowError(string message, params object[] args) { /* do something */ }
+            
+            void Foo() {
+              ShowError("Failed: {0}"); // Warning: Non-existing argument in format string
+            }
+            </code></example>
+        </member>
+        <member name="M:CasterUnitCore.Annotations.StringFormatMethodAttribute.#ctor(System.String)">
+            <paramCollection name="formatParameterName">
+            Specifies which parameter of an annotated method should be treated as format-string
+            </paramCollection>
+        </member>
+        <member name="T:CasterUnitCore.Annotations.ValueProviderAttribute">
+            <summary>
+            For a parameter that is expected to be one of the limited set of values.
+            Specify fields of which type should be used as values for this parameter.
+            </summary>
+        </member>
+        <member name="T:CasterUnitCore.Annotations.InvokerParameterNameAttribute">
+            <summary>
+            Indicates that the function argument should be string literal and match one
+            of the Parameters of the caller function. For example, ReSharper annotates
+            the parameter of <see cref="T:System.ArgumentNullException"/>.
+            </summary>
+            <example><code>
+            void Foo(string paramCollection) {
+              if (paramCollection == null)
+                throw new ArgumentNullException("par"); // Warning: Cannot resolve symbol
+            }
+            </code></example>
+        </member>
+        <member name="T:CasterUnitCore.Annotations.NotifyPropertyChangedInvocatorAttribute">
+             <summary>
+             Indicates that the method is contained in a type that implements
+             <c>System.ComponentModel.INotifyPropertyChanged</c> interface and this method
+             is used to notify that some property value changed.
+             </summary>
+             <remarks>
+             The method should be non-static and conform to one of the supported signatures:
+             <list>
+             <item><c>NotifyChanged(string)</c></item>
+             <item><c>NotifyChanged(params string[])</c></item>
+             <item><c>NotifyChanged{T}(Expression{Func{T}})</c></item>
+             <item><c>NotifyChanged{T,U}(Expression{Func{T,U}})</c></item>
+             <item><c>SetProperty{T}(ref T, T, string)</c></item>
+             </list>
+             </remarks>
+             <example><code>
+             public class Foo : INotifyPropertyChanged {
+               public event PropertyChangedEventHandler PropertyChanged;
+             
+               [NotifyPropertyChangedInvocator]
+               protected virtual void NotifyChanged(string propertyName) { ... }
+            
+               string _name;
+             
+               public string Name {
+                 get { return _name; }
+                 set { _name = value; NotifyChanged("LastName"); /* Warning */ }
+               }
+             }
+             </code>
+             Examples of generated notifications:
+             <list>
+             <item><c>NotifyChanged("Property")</c></item>
+             <item><c>NotifyChanged(() =&gt; Property)</c></item>
+             <item><c>NotifyChanged((VM x) =&gt; x.Property)</c></item>
+             <item><c>SetProperty(ref myField, value, "Property")</c></item>
+             </list>
+             </example>
+        </member>
+        <member name="T:CasterUnitCore.Annotations.ContractAnnotationAttribute">
+            <summary>
+            Describes dependency between method input and output.
+            </summary>
+            <syntax>
+            <p>Function Definition Table syntax:</p>
+            <list>
+            <item>FDT      ::= FDTRow [;FDTRow]*</item>
+            <item>FDTRow   ::= Input =&gt; Output | Output &lt;= Input</item>
+            <item>Input    ::= ParameterName: Value [, Input]*</item>
+            <item>Output   ::= [ParameterName: Value]* {halt|stop|void|nothing|Value}</item>
+            <item>Value    ::= true | false | null | notnull | canbenull</item>
+            </list>
+            If method has single input parameter, it's name could be omitted.<br/>
+            Using <c>halt</c> (or <c>void</c>/<c>nothing</c>, which is the same)
+            for method output means that the methos doesn't return normally.<br/>
+            <c>canbenull</c> annotation is only applicable for output Parameters.<br/>
+            You can use multiple <c>[ContractAnnotation]</c> for each FDT row,
+            or use single attribute with rows separated by semicolon.<br/>
+            </syntax>
+            <examples><list>
+            <item><code>
+            [ContractAnnotation("=> halt")]
+            public void TerminationMethod()
+            </code></item>
+            <item><code>
+            [ContractAnnotation("halt &lt;= condition: false")]
+            public void Assert(bool condition, string text) // regular assertion method
+            </code></item>
+            <item><code>
+            [ContractAnnotation("s:null => true")]
+            public bool IsNullOrEmpty(string s) // string.IsNullOrEmpty()
+            </code></item>
+            <item><code>
+            // A method that returns null if the parameter is null,
+            // and not null if the parameter is not null
+            [ContractAnnotation("null => null; notnull => notnull")]
+            public object Transform(object data) 
+            </code></item>
+            <item><code>
+            [ContractAnnotation("s:null=>false; =>true,result:notnull; =>false, result:null")]
+            public bool TryParse(string s, out Person result)
+            </code></item>
+            </list></examples>
+        </member>
+        <member name="T:CasterUnitCore.Annotations.LocalizationRequiredAttribute">
+            <summary>
+            Indicates that marked element should be localized or not.
+            </summary>
+            <example><code>
+            [LocalizationRequiredAttribute(true)]
+            class Foo {
+              string str = "my string"; // Warning: Localizable string
+            }
+            </code></example>
+        </member>
+        <member name="T:CasterUnitCore.Annotations.CannotApplyEqualityOperatorAttribute">
+            <summary>
+            Indicates that the value of the marked type (or its derivatives)
+            cannot be compared using '==' or '!=' operators and <c>Equals()</c>
+            should be used instead. However, using '==' or '!=' for comparison
+            with <c>null</c> is always permitted.
+            </summary>
+            <example><code>
+            [CannotApplyEqualityOperator]
+            class NoEquality { }
+            
+            class UsesNoEquality {
+              void Test() {
+                var ca1 = new NoEquality();
+                var ca2 = new NoEquality();
+                if (ca1 != null) { // OK
+                  bool condition = ca1 == ca2; // Warning
+                }
+              }
+            }
+            </code></example>
+        </member>
+        <member name="T:CasterUnitCore.Annotations.BaseTypeRequiredAttribute">
+            <summary>
+            When applied to a target attribute, specifies a requirement for any type marked
+            with the target attribute to implement or inherit specific type or types.
+            </summary>
+            <example><code>
+            [BaseTypeRequired(typeof(IComponent)] // Specify requirement
+            class ComponentAttribute : Attribute { }
+            
+            [Component] // ComponentAttribute requires implementing IComponent interface
+            class MyComponent : IComponent { }
+            </code></example>
+        </member>
+        <member name="T:CasterUnitCore.Annotations.UsedImplicitlyAttribute">
+            <summary>
+            Indicates that the marked symbol is used implicitly (e.g. via reflection, in external library),
+            so this symbol will not be marked as unused (as well as by other usage inspections).
+            </summary>
+        </member>
+        <member name="T:CasterUnitCore.Annotations.MeansImplicitUseAttribute">
+            <summary>
+            Should be used on attributes and causes ReSharper to not mark symbols marked with such attributes
+            as unused (as well as by other usage inspections)
+            </summary>
+        </member>
+        <member name="F:CasterUnitCore.Annotations.ImplicitUseKindFlags.Access">
+            <summary>Only entity marked with attribute considered used.</summary>
+        </member>
+        <member name="F:CasterUnitCore.Annotations.ImplicitUseKindFlags.Assign">
+            <summary>Indicates implicit assignment to a member.</summary>
+        </member>
+        <member name="F:CasterUnitCore.Annotations.ImplicitUseKindFlags.InstantiatedWithFixedConstructorSignature">
+            <summary>
+            Indicates implicit instantiation of a type with fixed constructor signature.
+            That means any unused constructor Parameters won't be reported as such.
+            </summary>
+        </member>
+        <member name="F:CasterUnitCore.Annotations.ImplicitUseKindFlags.InstantiatedNoFixedConstructorSignature">
+            <summary>Indicates implicit instantiation of a type.</summary>
+        </member>
+        <member name="T:CasterUnitCore.Annotations.ImplicitUseTargetFlags">
+            <summary>
+            Specify what is considered used implicitly when marked
+            with <see cref="T:CasterUnitCore.Annotations.MeansImplicitUseAttribute"/> or <see cref="T:CasterUnitCore.Annotations.UsedImplicitlyAttribute"/>.
+            </summary>
+        </member>
+        <member name="F:CasterUnitCore.Annotations.ImplicitUseTargetFlags.Members">
+            <summary>Members of entity marked with attribute are considered used.</summary>
+        </member>
+        <member name="F:CasterUnitCore.Annotations.ImplicitUseTargetFlags.WithMembers">
+            <summary>Entity marked with attribute and all its members considered used.</summary>
+        </member>
+        <member name="T:CasterUnitCore.Annotations.PublicAPIAttribute">
+            <summary>
+            This attribute is intended to mark publicly available API
+            which should not be removed and so is treated as used.
+            </summary>
+        </member>
+        <member name="T:CasterUnitCore.Annotations.InstantHandleAttribute">
+            <summary>
+            Tells code analysis engine if the parameter is completely handled when the invoked method is on stack.
+            If the parameter is a delegate, indicates that delegate is executed while the method is executed.
+            If the parameter is an enumerable, indicates that it is enumerated while the method is executed.
+            </summary>
+        </member>
+        <member name="T:CasterUnitCore.Annotations.PureAttribute">
+            <summary>
+            Indicates that a method does not make any observable state changes.
+            The same as <c>System.Diagnostics.Contracts.PureAttribute</c>.
+            </summary>
+            <example><code>
+            [Pure] int Multiply(int x, int y) => x * y;
+            
+            void M() {
+              Multiply(123, 42); // Waring: Return value of pure method is not used
+            }
+            </code></example>
+        </member>
+        <member name="T:CasterUnitCore.Annotations.MustUseReturnValueAttribute">
+            <summary>
+            Indicates that the return value of method invocation must be used.
+            </summary>
+        </member>
+        <member name="T:CasterUnitCore.Annotations.ProvidesContextAttribute">
+            <summary>
+            Indicates the type member or parameter of some type, that should be used instead of all other ways
+            to get the value that type. This annotation is useful when you have some "context" value evaluated
+            and stored somewhere, meaning that all other ways to get this value must be consolidated with existing one.
+            </summary>
+            <example><code>
+            class Foo {
+              [ProvidesContext] IBarService _barService = ...;
+            
+              void ProcessNode(INode node) {
+                DoSomething(node, node.GetGlobalServices().Bar);
+                //              ^ Warning: use value of '_barService' field
+              }
+            }
+            </code></example>
+        </member>
+        <member name="T:CasterUnitCore.Annotations.PathReferenceAttribute">
+            <summary>
+            Indicates that a parameter is a path to a file or a folder within a web project.
+            Path can be relative or absolute, starting from web root (~).
+            </summary>
+        </member>
+        <member name="T:CasterUnitCore.Annotations.SourceTemplateAttribute">
+            <summary>
+            An extension method marked with this attribute is processed by ReSharper code completion
+            as a 'Source Template'. When extension method is completed over some expression, it's source code
+            is automatically expanded like a template at call site.
+            </summary>
+            <remarks>
+            Template method body can contain valid source code and/or special comments starting with '$'.
+            Text inside these comments is added as source code when the template is applied. Template Parameters
+            can be used either as additional method Parameters or as identifiers wrapped in two '$' signs.
+            Use the <see cref="T:CasterUnitCore.Annotations.MacroAttribute"/> attribute to specify macros for Parameters.
+            </remarks>
+            <example>
+            In this example, the 'forEach' method is a source template available over all values
+            of enumerable types, producing ordinary C# 'foreach' statement and placing caret inside block:
+            <code>
+            [SourceTemplate]
+            public static void forEach&lt;T&gt;(this IEnumerable&lt;T&gt; xs) {
+              foreach (var x in xs) {
+                 //$ $END$
+              }
+            }
+            </code>
+            </example>
+        </member>
+        <member name="T:CasterUnitCore.Annotations.MacroAttribute">
+            <summary>
+            Allows specifying a macro for a parameter of a <see cref="T:CasterUnitCore.Annotations.SourceTemplateAttribute">source template</see>.
+            </summary>
+            <remarks>
+            You can apply the attribute on the whole method or on any of its additional Parameters. The macro expression
+            is defined in the <see cref="P:CasterUnitCore.Annotations.MacroAttribute.Expression"/> property. When applied on a method, the target
+            template parameter is defined in the <see cref="P:CasterUnitCore.Annotations.MacroAttribute.Target"/> property. To apply the macro silently
+            for the parameter, set the <see cref="P:CasterUnitCore.Annotations.MacroAttribute.Editable"/> property value = -1.
+            </remarks>
+            <example>
+            Applying the attribute on a source template method:
+            <code>
+            [SourceTemplate, Macro(Target = "item", Expression = "suggestVariableName()")]
+            public static void forEach&lt;T&gt;(this IEnumerable&lt;T&gt; collection) {
+              foreach (var item in collection) {
+                //$ $END$
+              }
+            }
+            </code>
+            Applying the attribute on a template method parameter:
+            <code>
+            [SourceTemplate]
+            public static void something(this Entity x, [Macro(Expression = "guid()", Editable = -1)] string newguid) {
+              /*$ var $x$Id = "$newguid$" + x.ToString();
+              x.DoSomething($x$Id); */
+            }
+            </code>
+            </example>
+        </member>
+        <member name="P:CasterUnitCore.Annotations.MacroAttribute.Expression">
+            <summary>
+            Allows specifying a macro that will be executed for a <see cref="T:CasterUnitCore.Annotations.SourceTemplateAttribute">source template</see>
+            parameter when the template is expanded.
+            </summary>
+        </member>
+        <member name="P:CasterUnitCore.Annotations.MacroAttribute.Editable">
+            <summary>
+            Allows specifying which occurrence of the target parameter becomes editable when the template is deployed.
+            </summary>
+            <remarks>
+            If the target parameter is used several times in the template, only one occurrence becomes editable;
+            other occurrences are changed synchronously. To specify the zero-based index of the editable occurrence,
+            use values >= 0. To make the parameter non-editable when the template is expanded, use -1.
+            </remarks>>
+        </member>
+        <member name="P:CasterUnitCore.Annotations.MacroAttribute.Target">
+            <summary>
+            Identifies the target parameter of a <see cref="T:CasterUnitCore.Annotations.SourceTemplateAttribute">source template</see> if the
+            <see cref="T:CasterUnitCore.Annotations.MacroAttribute"/> is applied on a template method.
+            </summary>
+        </member>
+        <member name="T:CasterUnitCore.Annotations.AspMvcActionAttribute">
+            <summary>
+            ASP.NET MVC attribute. If applied to a parameter, indicates that the parameter
+            is an MVC action. If applied to a method, the MVC action name is calculated
+            implicitly from the context. Use this attribute for custom wrappers similar to
+            <c>System.Web.Mvc.Html.ChildActionExtensions.RenderAction(HtmlHelper, String)</c>.
+            </summary>
+        </member>
+        <member name="T:CasterUnitCore.Annotations.AspMvcAreaAttribute">
+            <summary>
+            ASP.NET MVC attribute. Indicates that a parameter is an MVC area.
+            Use this attribute for custom wrappers similar to
+            <c>System.Web.Mvc.Html.ChildActionExtensions.RenderAction(HtmlHelper, String)</c>.
+            </summary>
+        </member>
+        <member name="T:CasterUnitCore.Annotations.AspMvcControllerAttribute">
+            <summary>
+            ASP.NET MVC attribute. If applied to a parameter, indicates that the parameter is
+            an MVC controller. If applied to a method, the MVC controller name is calculated
+            implicitly from the context. Use this attribute for custom wrappers similar to
+            <c>System.Web.Mvc.Html.ChildActionExtensions.RenderAction(HtmlHelper, String, String)</c>.
+            </summary>
+        </member>
+        <member name="T:CasterUnitCore.Annotations.AspMvcMasterAttribute">
+            <summary>
+            ASP.NET MVC attribute. Indicates that a parameter is an MVC Master. Use this attribute
+            for custom wrappers similar to <c>System.Web.Mvc.Controller.View(String, String)</c>.
+            </summary>
+        </member>
+        <member name="T:CasterUnitCore.Annotations.AspMvcModelTypeAttribute">
+            <summary>
+            ASP.NET MVC attribute. Indicates that a parameter is an MVC model type. Use this attribute
+            for custom wrappers similar to <c>System.Web.Mvc.Controller.View(String, Object)</c>.
+            </summary>
+        </member>
+        <member name="T:CasterUnitCore.Annotations.AspMvcPartialViewAttribute">
+            <summary>
+            ASP.NET MVC attribute. If applied to a parameter, indicates that the parameter is an MVC
+            partial view. If applied to a method, the MVC partial view name is calculated implicitly
+            from the context. Use this attribute for custom wrappers similar to
+            <c>System.Web.Mvc.Html.RenderPartialExtensions.RenderPartial(HtmlHelper, String)</c>.
+            </summary>
+        </member>
+        <member name="T:CasterUnitCore.Annotations.AspMvcSuppressViewErrorAttribute">
+            <summary>
+            ASP.NET MVC attribute. Allows disabling inspections for MVC views within a class or a method.
+            </summary>
+        </member>
+        <member name="T:CasterUnitCore.Annotations.AspMvcDisplayTemplateAttribute">
+            <summary>
+            ASP.NET MVC attribute. Indicates that a parameter is an MVC display template.
+            Use this attribute for custom wrappers similar to 
+            <c>System.Web.Mvc.Html.DisplayExtensions.DisplayForModel(HtmlHelper, String)</c>.
+            </summary>
+        </member>
+        <member name="T:CasterUnitCore.Annotations.AspMvcEditorTemplateAttribute">
+            <summary>
+            ASP.NET MVC attribute. Indicates that a parameter is an MVC editor template.
+            Use this attribute for custom wrappers similar to
+            <c>System.Web.Mvc.Html.EditorExtensions.EditorForModel(HtmlHelper, String)</c>.
+            </summary>
+        </member>
+        <member name="T:CasterUnitCore.Annotations.AspMvcTemplateAttribute">
+            <summary>
+            ASP.NET MVC attribute. Indicates that a parameter is an MVC template.
+            Use this attribute for custom wrappers similar to
+            <c>System.ComponentModel.DataAnnotations.UIHintAttribute(System.String)</c>.
+            </summary>
+        </member>
+        <member name="T:CasterUnitCore.Annotations.AspMvcViewAttribute">
+            <summary>
+            ASP.NET MVC attribute. If applied to a parameter, indicates that the parameter
+            is an MVC view component. If applied to a method, the MVC view name is calculated implicitly
+            from the context. Use this attribute for custom wrappers similar to
+            <c>System.Web.Mvc.Controller.View(Object)</c>.
+            </summary>
+        </member>
+        <member name="T:CasterUnitCore.Annotations.AspMvcViewComponentAttribute">
+            <summary>
+            ASP.NET MVC attribute. If applied to a parameter, indicates that the parameter
+            is an MVC view component name.
+            </summary>
+        </member>
+        <member name="T:CasterUnitCore.Annotations.AspMvcViewComponentViewAttribute">
+            <summary>
+            ASP.NET MVC attribute. If applied to a parameter, indicates that the parameter
+            is an MVC view component view. If applied to a method, the MVC view component view name is default.
+            </summary>
+        </member>
+        <member name="T:CasterUnitCore.Annotations.AspMvcActionSelectorAttribute">
+            <summary>
+            ASP.NET MVC attribute. When applied to a parameter of an attribute,
+            indicates that this parameter is an MVC action name.
+            </summary>
+            <example><code>
+            [ActionName("Foo")]
+            public ActionResult Login(string returnUrl) {
+              ViewBag.ReturnUrl = Url.Action("Foo"); // OK
+              return RedirectToAction("Bar"); // Error: Cannot resolve action
+            }
+            </code></example>
+        </member>
+        <member name="T:CasterUnitCore.Annotations.RazorSectionAttribute">
+            <summary>
+            Razor attribute. Indicates that a parameter or a method is a Razor section.
+            Use this attribute for custom wrappers similar to 
+            <c>System.Web.WebPages.WebPageBase.RenderSection(String)</c>.
+            </summary>
+        </member>
+        <member name="T:CasterUnitCore.Annotations.CollectionAccessAttribute">
+            <summary>
+            Indicates how method, constructor invocation or property access
+            over collection type affects content of the collection.
+            </summary>
+        </member>
+        <member name="F:CasterUnitCore.Annotations.CollectionAccessType.None">
+            <summary>Method does not use or modify content of the collection.</summary>
+        </member>
+        <member name="F:CasterUnitCore.Annotations.CollectionAccessType.Read">
+            <summary>Method only reads content of the collection but does not modify it.</summary>
+        </member>
+        <member name="F:CasterUnitCore.Annotations.CollectionAccessType.ModifyExistingContent">
+            <summary>Method can change content of the collection but does not add new elements.</summary>
+        </member>
+        <member name="F:CasterUnitCore.Annotations.CollectionAccessType.UpdatedContent">
+            <summary>Method can add new elements to the collection.</summary>
+        </member>
+        <member name="T:CasterUnitCore.Annotations.AssertionMethodAttribute">
+            <summary>
+            Indicates that the marked method is assertion method, i.e. it halts control flow if
+            one of the conditions is satisfied. To set the condition, mark one of the Parameters with 
+            <see cref="T:CasterUnitCore.Annotations.AssertionConditionAttribute"/> attribute.
+            </summary>
+        </member>
+        <member name="T:CasterUnitCore.Annotations.AssertionConditionAttribute">
+            <summary>
+            Indicates the condition parameter of the assertion method. The method itself should be
+            marked by <see cref="T:CasterUnitCore.Annotations.AssertionMethodAttribute"/> attribute. The mandatory argument of
+            the attribute is the assertion type.
+            </summary>
+        </member>
+        <member name="T:CasterUnitCore.Annotations.AssertionConditionType">
+            <summary>
+            Specifies assertion type. If the assertion method argument satisfies the condition,
+            then the execution continues. Otherwise, execution is assumed to be halted.
+            </summary>
+        </member>
+        <member name="F:CasterUnitCore.Annotations.AssertionConditionType.IS_TRUE">
+            <summary>Marked parameter should be evaluated to true.</summary>
+        </member>
+        <member name="F:CasterUnitCore.Annotations.AssertionConditionType.IS_FALSE">
+            <summary>Marked parameter should be evaluated to false.</summary>
+        </member>
+        <member name="F:CasterUnitCore.Annotations.AssertionConditionType.IS_NULL">
+            <summary>Marked parameter should be evaluated to null value.</summary>
+        </member>
+        <member name="F:CasterUnitCore.Annotations.AssertionConditionType.IS_NOT_NULL">
+            <summary>Marked parameter should be evaluated to not null value.</summary>
+        </member>
+        <member name="T:CasterUnitCore.Annotations.TerminatesProgramAttribute">
+            <summary>
+            Indicates that the marked method unconditionally terminates control flow execution.
+            For example, it could unconditionally throw exception.
+            </summary>
+        </member>
+        <member name="T:CasterUnitCore.Annotations.LinqTunnelAttribute">
+            <summary>
+            Indicates that method is pure LINQ method, with postponed enumeration (like Enumerable.Select,
+            .Where). This annotation allows inference of [InstantHandle] annotation for Parameters
+            of delegate type by analyzing LINQ method chains.
+            </summary>
+        </member>
+        <member name="T:CasterUnitCore.Annotations.NoEnumerationAttribute">
+            <summary>
+            Indicates that IEnumerable, passed as parameter, is not enumerated.
+            </summary>
+        </member>
+        <member name="T:CasterUnitCore.Annotations.RegexPatternAttribute">
+            <summary>
+            Indicates that parameter is regular expression pattern.
+            </summary>
+        </member>
+        <member name="T:CasterUnitCore.Annotations.XamlItemsControlAttribute">
+            <summary>
+            XAML attribute. Indicates the type that has <c>ItemsSource</c> property and should be treated
+            as <c>ItemsControl</c>-derived type, to enable inner items <c>DataContext</c> type resolve.
+            </summary>
+        </member>
+        <member name="T:CasterUnitCore.Annotations.XamlItemBindingOfItemsControlAttribute">
+            <summary>
+            XAML attribute. Indicates the property of some <c>BindingBase</c>-derived type, that
+            is used to bind some item of <c>ItemsControl</c>-derived type. This annotation will
+            enable the <c>DataContext</c> type resolve for XAML bindings for such properties.
+            </summary>
+            <remarks>
+            Property should have the tree ancestor of the <c>ItemsControl</c> type or
+            marked with the <see cref="T:CasterUnitCore.Annotations.XamlItemsControlAttribute"/> attribute.
+            </remarks>
+        </member>
+        <member name="T:CasterUnitCore.Annotations.NoReorder">
+            <summary>
+            Prevents the Member Reordering feature from tossing members of the marked class.
+            </summary>
+            <remarks>
+            The attribute must be mentioned in your member reordering patterns
+            </remarks>
+        </member>
+        <member name="T:CasterUnitCore.Properties.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:CasterUnitCore.Properties.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:CasterUnitCore.Properties.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:CasterUnitCore.Properties.Resources._1">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:CasterUnitCore.Properties.Resources._10">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:CasterUnitCore.Properties.Resources._11">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:CasterUnitCore.Properties.Resources._12">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:CasterUnitCore.Properties.Resources._13">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:CasterUnitCore.Properties.Resources._14">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:CasterUnitCore.Properties.Resources._15">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:CasterUnitCore.Properties.Resources._16">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:CasterUnitCore.Properties.Resources._17">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:CasterUnitCore.Properties.Resources._18">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:CasterUnitCore.Properties.Resources._2">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:CasterUnitCore.Properties.Resources._3">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:CasterUnitCore.Properties.Resources._4">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:CasterUnitCore.Properties.Resources._5">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:CasterUnitCore.Properties.Resources._6">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:CasterUnitCore.Properties.Resources._7">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:CasterUnitCore.Properties.Resources._8">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:CasterUnitCore.Properties.Resources._9">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="T:CasterUnitCore.CapeEnergyPort">
+            <summary>
+            UnitPort connect to energy
+            </summary>
+        </member>
+        <member name="M:CasterUnitCore.CapeEnergyPort.#ctor(System.String,CAPEOPEN.CapePortDirection,System.String,System.Boolean)">
+            <summary>
+            Create a energy port, contains a ICapeCollection
+            </summary>
+        </member>
+        <member name="M:CasterUnitCore.CapeEnergyPort.Connect(System.Object)">
+            <summary>
+            connect to ICapeCollection
+            </summary>
+        </member>
+        <member name="P:CasterUnitCore.CapeEnergyPort.connectedObject">
+            <summary>
+            get the raw COM interface of ICapeCollection created by simulator
+            </summary>
+        </member>
+        <member name="P:CasterUnitCore.CapeEnergyPort.Item(System.String)">
+            <summary>
+            Get Item by a string id or a int id
+            </summary>
+        </member>
+        <member name="P:CasterUnitCore.CapeEnergyPort.Item(System.Int32)">
+            <summary>
+            Get Item by a string id or a int id
+            </summary>
+        </member>
+        <member name="P:CasterUnitCore.CapeEnergyPort.Count">
+            <summary>
+            return the number in this collection
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:CasterUnitCore.CapeEnergyPort.Work">
+            <summary>
+            return work parameter in this energy port, if not present, return 0
+            </summary>
+        </member>
+        <member name="P:CasterUnitCore.CapeEnergyPort.TemperatureLow">
+            <summary>
+            return temperatureLow parameter in this energy port, if not present, return 0
+            </summary>
+        </member>
+        <member name="P:CasterUnitCore.CapeEnergyPort.TemperatureHigh">
+            <summary>
+            return temperatureHigh parameter in this energy port, if not present, return 0
+            </summary>
+        </member>
+        <member name="T:CasterUnitCore.CapeInformationPort">
+            <summary>
+            UnitPort connect to information
+            </summary>
+        </member>
+        <member name="M:CasterUnitCore.CapeInformationPort.#ctor(System.String,CAPEOPEN.CapePortDirection,System.String,System.Boolean)">
+            <summary>
+            Create a energy port, contains a ICapeCollection
+            </summary>
+        </member>
+        <member name="M:CasterUnitCore.CapeInformationPort.Connect(System.Object)">
+            <summary>
+            connect to information, must be ICapeCollection
+            </summary>
+        </member>
+        <member name="P:CasterUnitCore.CapeInformationPort.connectedObject">
+            <summary>
+            get the raw COM interface of ICapeCollection created by simulator
+            </summary>
+        </member>
+        <member name="P:CasterUnitCore.CapeInformationPort.Item(System.String)">
+            <summary>
+            Get Item by a string id or a int id
+            </summary>
+        </member>
+        <member name="P:CasterUnitCore.CapeInformationPort.Item(System.Int32)">
+            <summary>
+            Get Item by a string id or a int id
+            </summary>
+        </member>
+        <member name="P:CasterUnitCore.CapeInformationPort.Count">
+            <summary>
+            return the number in this collection
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:CasterUnitCore.CapeMaterialPort">
+            <summary>
+            UnitPort connect to material
+            </summary>
+        </member>
+        <member name="M:CasterUnitCore.CapeMaterialPort.#ctor(System.String,CAPEOPEN.CapePortDirection,System.String,System.Boolean)">
+            <summary>
+            Create CapeMaterialPort
+            </summary>
+        </member>
+        <member name="M:CasterUnitCore.CapeMaterialPort.Connect(System.Object)">
+            <summary>
+            connect to stream, can be CO1.0 ICapeThermoMaterialObject or CO1.1 ICapeThermoMaterial
+            </summary>
+        </member>
+        <member name="P:CasterUnitCore.CapeMaterialPort.connectedObject">
+            <summary>
+            get the raw COM interface of material created by simulator
+            </summary>
+        </member>
+        <member name="P:CasterUnitCore.CapeMaterialPort.Material">
+            <summary>
+            get and set material to port with wrapper
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:CasterUnitCore.CapeUnitPort">
+            <summary>
+            UnitPort base
+            </summary>
+        </member>
+        <member name="M:CasterUnitCore.CapeUnitPort.#ctor(System.String,CAPEOPEN.CapePortType,CAPEOPEN.CapePortDirection,System.String,System.Boolean)">
+            <summary>
+            default name is "capeUnitPort"
+            </summary>
+        </member>
+        <member name="M:CasterUnitCore.CapeUnitPort.Connect(System.Object)">
+            <summary>
+            connect to stream, can be material or ICapeCollection
+            </summary>
+        </member>
+        <member name="M:CasterUnitCore.CapeUnitPort.Disconnect">
+            <summary>
+            release object
+            </summary>
+        </member>
+        <member name="P:CasterUnitCore.CapeUnitPort.portType">
+            <summary>
+            get port type
+            </summary>
+        </member>
+        <member name="P:CasterUnitCore.CapeUnitPort.direction">
+            <summary>
+            get port direction
+            </summary>
+        </member>
+        <member name="P:CasterUnitCore.CapeUnitPort.connectedObject">
+            <summary>
+            get the raw COM interface of connected object
+            </summary>
+        </member>
+        <member name="M:CasterUnitCore.CapeUnitPort.IsConnected">
+            <summary>
+            Whether the port is filled with something
+            </summary>
+        </member>
+        <member name="T:CasterUnitCore.MaterialObject">
+            <summary>
+            Uniform wrapper of material object
+            </summary>
+        </member>
+        <member name="F:CasterUnitCore.MaterialObject.MaterialObjectVersion">
+            <summary>
+            get material object version, can be 11 or 10
+            </summary>
+        </member>
+        <member name="F:CasterUnitCore.MaterialObject.aliasName">
+            <summary>
+            A string array used to make CompoundList property faster, avoid calling Thermo System, contains the aliasName of compound
+            </summary>
+        </member>
+        <member name="P:CasterUnitCore.MaterialObject.CapeThermoMaterialObject">
+            <summary>
+            return COM raw interface
+            </summary>
+        </member>
+        <member name="M:CasterUnitCore.MaterialObject.ClearAllProperties">
+            <summary>
+            Clear all property in material, set to initial state
+            </summary>
+        </member>
+        <member name="M:CasterUnitCore.MaterialObject.Destroy">
+            <summary>
+            Disconnect COM component, release the COM component, this method will call IDispose.
+            </summary>
+        </member>
+        <member name="M:CasterUnitCore.MaterialObject.Duplicate">
+            <summary>
+            Duplicate this material, it is the only way to create a new material object
+            </summary>
+            <returns>return MaterialObject10 or MaterialObject11</returns>
+        </member>
+        <member name="M:CasterUnitCore.MaterialObject.IsValid">
+            <summary>
+            Whether the COM material object is connected to this class
+            </summary>
+        </member>
+        <member name="M:CasterUnitCore.MaterialObject.SetMaterial(System.Object)">
+            <summary>
+            Set material object raw COM interface or MaterialObject to this class
+            </summary>
+            <paramCollection name="material">raw COM interface like ICapeThermoMaterial</paramCollection>
+            <returns></returns>
+        </member>
+        <member name="M:CasterUnitCore.MaterialObject.SetMaterial(CasterUnitCore.MaterialObject)">
+            <summary>
+            Set MaterialObject to this class
+            </summary>
+            <paramCollection name="material">MaterialObject</paramCollection>
+            <returns></returns>
+        </member>
+        <member name="M:CasterUnitCore.MaterialObject.Dispose">
+            <summary>
+            Release resources, do nothing for now
+            </summary>
+        </member>
+        <member name="M:CasterUnitCore.MaterialObject.CheckEquilibriumSpec(System.String[],System.String[],System.String)">
+            <summary>
+            Check if the specified condition is available by thermo system, CO1.0 will always return true
+            </summary>
+        </member>
+        <member name="M:CasterUnitCore.MaterialObject.DoFlash(System.String[],System.String[],System.String,System.Boolean)">
+            <summary>
+            Do Flash by flashSpec, in most case you don't need this, will check the spec first
+            </summary>
+            <paramCollection name="flashSpec1">
+            1.1: the first flash specification, eg. string[3]{name，basis，phase}
+            1.0: flash specification, eg. string[1]{specification}
+            </paramCollection>
+            <paramCollection name="flashSpec2">
+            1.1: the second flash specification，eg. string[3]{name，basis，phase}
+            1.0: null
+            </paramCollection>
+            <paramCollection name="showWarning">whether show a MessageBox to warn flash failure</paramCollection>
+            <paramCollection name="solutionType"></paramCollection>
+            <returns>calculate state</returns>
+        </member>
+        <member name="M:CasterUnitCore.MaterialObject.DoTPFlash(System.Boolean)">
+            <summary>
+            Temperature-Pressure flash, must set overall T,P,TotalFlow,Composition first, if fails, show message on Debug
+            </summary>
+            <paramCollection name="showWarning">whether show a MessageBox to warn flash failure</paramCollection>
+        </member>
+        <member name="M:CasterUnitCore.MaterialObject.DoPHFlash(System.Boolean)">
+            <summary>
+            Pressure-Enthalpy flash, must set overall P,H,TotalFlow,Composition first, if fails, show message on Debug
+            </summary>
+            <paramCollection name="showWarning">whether show a MessageBox to warn flash failure</paramCollection>
+        </member>
+        <member name="M:CasterUnitCore.MaterialObject.DoTHFlash(System.Boolean)">
+            <summary>
+            Temperature-Enthalpy flash, must set overall T,H,TotalFlow,Composition first, if fails, show message on Debug
+            </summary>
+            <paramCollection name="showWarning">whether show a MessageBox to warn flash failure</paramCollection>
+        </member>
+        <member name="M:CasterUnitCore.MaterialObject.DoTVFFlash(System.Boolean)">
+            <summary>
+            Temperature-VaporFraction flash, must set overall T,VaporFraction,TotalFlow,Composition first, if fails, show message on Debug
+            </summary>
+            <paramCollection name="showWarning">whether show a MessageBox to warn flash failure</paramCollection>
+        </member>
+        <member name="M:CasterUnitCore.MaterialObject.DoPVFlash(System.Boolean)">
+            <summary>
+            Pressure-VaporFraction flash, must set overall P,VaporFraction,TotalFlow,Composition first, if fails, show message on Debug
+            </summary>
+            <paramCollection name="showWarning">whether show a MessageBox to warn flash failure</paramCollection>
+        </member>
+        <member name="M:CasterUnitCore.MaterialObject.GetListOfAllowedPhase(System.String[]@,System.String@)">
+            <summary>
+            Get all allowed phase by thermo system
+            </summary>
+            <paramCollection name="phaseAggregationList">null for CO1.0</paramCollection>
+            <paramCollection name="keyCompoundId">null for CO1.0</paramCollection>
+        </member>
+        <member name="M:CasterUnitCore.MaterialObject.GetListOfPresentPhases(CAPEOPEN.eCapePhaseStatus[]@)">
+            <summary>
+            Get present phases, not alway reliable, sometimes may have some 0 flow phase
+            获取当前存在的相态，未必可靠（有时会有多出来的相）
+            </summary>
+            <paramCollection name="presentPhaseStatus">the state of phase, null for CO1.0</paramCollection>
+        </member>
+        <member name="M:CasterUnitCore.MaterialObject.SetListOfPresentPhases(System.Collections.Generic.IEnumerable{CasterUnitCore.Phases},System.Collections.Generic.IEnumerable{CAPEOPEN.eCapePhaseStatus})">
+            <summary>
+            set present phase, unavailable for CO1.0
+            </summary>
+        </member>
+        <member name="P:CasterUnitCore.MaterialObject.PresentPhases">
+            <summary>
+            get or set PresentPhases, setter is unavailable for CO1.0
+            </summary>
+        </member>
+        <member name="P:CasterUnitCore.MaterialObject.AllowedPhases">
+            <summary>
+            get alloed phases, always used to get actual phase name in diffent software
+            </summary>
+        </member>
+        <member name="P:CasterUnitCore.MaterialObject.VaporMaterial">
+            <summary>
+            Get the vapor part of current material
+            </summary>
+        </member>
+        <member name="P:CasterUnitCore.MaterialObject.LiquidMaterial">
+            <summary>
+            Get the liquid part of current material
+            </summary>
+        </member>
+        <member name="P:CasterUnitCore.MaterialObject.CompoundNum">
+            <summary>
+            get number of compound, will return the previous stored data
+            </summary>
+        </member>
+        <member name="P:CasterUnitCore.MaterialObject.Compounds">
+            <summary>
+            get compound aliasName, only get once really when SetMaterial is invoked,
+            other time it will return the previous stored data.
+            If your need to get CompoundList in somewhere else than Calculate, call UpdateCompoundList first.
+            </summary>
+        </member>
+        <member name="P:CasterUnitCore.MaterialObject.Formulas">
+            <summary>
+            get compound formulaName, unavailable for CO1.0
+            </summary>
+        </member>
+        <member name="M:CasterUnitCore.MaterialObject.UpdateCompoundList">
+            <summary>
+            Force to call the Thermo System, to get a new CompoundList. 
+            If your need to get CompoundList in somewhere else than Calculate, call this method first.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CasterUnitCore.MaterialObject.GetOverallPropDouble(System.String,CasterUnitCore.PropertyBasis)">
+            <summary>
+            get overall property, return a double number, if not present, return 0; if result is an array, throw an exception
+            </summary>
+        </member>
+        <member name="M:CasterUnitCore.MaterialObject.GetOverallPropList(System.String,CasterUnitCore.PropertyBasis)">
+            <summary>
+            get overall property, return a double array, if result is a single number, will return a single element array
+            </summary>
+        </member>
+        <member name="M:CasterUnitCore.MaterialObject.SetOverallPropDouble(System.String,CasterUnitCore.PropertyBasis,System.Double)">
+            <summary>
+            set overall property
+            </summary>
+        </member>
+        <member name="M:CasterUnitCore.MaterialObject.SetOverallPropList(System.String,CasterUnitCore.PropertyBasis,System.Collections.Generic.IEnumerable{System.Double})">
+            <summary>
+            set overall property
+            </summary>
+            <paramCollection name="value">the value to be set, MUST be IEnumerable double, if you want to set other data structure, use the raw interface</paramCollection>
+        </member>
+        <member name="P:CasterUnitCore.MaterialObject.T">
+            <summary>
+            overall temperature
+            </summary>
+        </member>
+        <member name="P:CasterUnitCore.MaterialObject.P">
+            <summary>
+            overall pressure
+            </summary>
+        </member>
+        <member name="P:CasterUnitCore.MaterialObject.TotalFlow">
+            <summary>
+            overall totalflow, mole basis
+            </summary>
+        </member>
+        <member name="P:CasterUnitCore.MaterialObject.Composition">
+            <summary>
+            Overall composition, mole basis
+            If you set a partial composition with some compounds is not in the dict, the method will take them as 0.
+            </summary>
+        </member>
+        <member name="P:CasterUnitCore.MaterialObject.CompositionFlow">
+            <summary>
+            overall composition, mole basis
+            </summary>
+        </member>
+        <member name="P:CasterUnitCore.MaterialObject.VaporFraction">
+            <summary>
+            fraction of vapor phase, mole basis
+            </summary>
+        </member>
+        <member name="P:CasterUnitCore.MaterialObject.Enthalpy">
+            <summary>
+            overall enthalpy, unit is J/s
+            </summary>
+        </member>
+        <member name="P:CasterUnitCore.MaterialObject.Entropy">
+            <summary>
+            overall entropy, unit is J/s
+            </summary>
+        </member>
+        <member name="P:CasterUnitCore.MaterialObject.VolumeFlow">
+            <summary>
+            total volume, unit is m3/s
+            </summary>
+        </member>
+        <member name="P:CasterUnitCore.MaterialObject.GibbsEnergy">
+            <summary>
+            overall gibbs free energy, unit is J/s
+            </summary>
+        </member>
+        <member name="P:CasterUnitCore.MaterialObject.KValue">
+            <summary>
+            get K value between Vapor and Liquid phase
+            </summary>
+        </member>
+        <member name="M:CasterUnitCore.MaterialObject.GetOverallTPFlowComposition(System.Double@,System.Double@,System.Double@,System.Collections.Generic.Dictionary{System.String,System.Double}@)">
+            <summary>
+            get overall T,P,totalFlow,Composition
+            </summary>
+        </member>
+        <member name="M:CasterUnitCore.MaterialObject.SetOverallTPFlowCompositionAndFlash(System.Double,System.Double,System.Double,System.Collections.Generic.Dictionary{System.String,System.Double})">
+            <summary>
+            set overall T,P,totalFlow,Composition, and do a TP flash
+            </summary>
+        </member>
+        <member name="P:CasterUnitCore.MaterialObject.AvailableSinglePhaseProp">
+            <summary>
+            get all available single phase property, for CO1.0 return all property
+            </summary>
+        </member>
+        <member name="M:CasterUnitCore.MaterialObject.GetSinglePhasePropList(System.String,CasterUnitCore.Phases,CasterUnitCore.PropertyBasis,System.Boolean)">
+            <summary>
+            get single phase property, return a double array, will try to calculate property first, if phase is not present, return new double[CompoundNum], all 0
+            </summary>
+        </member>
+        <member name="M:CasterUnitCore.MaterialObject.SetSinglePhasePropList(System.String,CasterUnitCore.Phases,CasterUnitCore.PropertyBasis,System.Collections.Generic.IEnumerable{System.Double})">
+            <summary>
+            set single phase property
+            </summary>
+            <paramCollection name="value">the value to be set, MUST be IEnumerable double, if you want to set other data structure, use the raw interface</paramCollection>
+        </member>
+        <member name="M:CasterUnitCore.MaterialObject.GetSinglePhasePropDouble(System.String,CasterUnitCore.Phases,CasterUnitCore.PropertyBasis,System.Boolean)">
+            <summary>
+            get single phase property, return a double number, will try to calculate property first, if not present, return 0; if property is an array, throw exception
+            </summary>
+        </member>
+        <member name="M:CasterUnitCore.MaterialObject.SetSinglePhasePropDouble(System.String,CasterUnitCore.Phases,CasterUnitCore.PropertyBasis,System.Double)">
+            <summary>
+            set single pahse property
+            </summary>
+        </member>
+        <member name="M:CasterUnitCore.MaterialObject.GetSinglePhaseFlow(CasterUnitCore.Phases,CasterUnitCore.PropertyBasis)">
+            <summary>
+            get single phase flow
+            </summary>
+        </member>
+        <member name="M:CasterUnitCore.MaterialObject.GetSinglePhaseComposition(CasterUnitCore.Phases,CasterUnitCore.PropertyBasis)">
+            <summary>
+            get the vapor or liquid part composition of the material, must be flashed first!
+            </summary>
+        </member>
+        <member name="M:CasterUnitCore.MaterialObject.SetSinglePhaseComposition(CasterUnitCore.Phases,CasterUnitCore.PropertyBasis,System.Collections.Generic.Dictionary{System.String,System.Double})">
+            <summary>
+            set single phase composition, eg.set V or L in RadFrac
+            </summary>
+        </member>
+        <member name="M:CasterUnitCore.MaterialObject.SetSinglePhaseComposition(CasterUnitCore.Phases,CasterUnitCore.PropertyBasis,System.Collections.Generic.IEnumerable{System.Double})">
+            <summary>
+            Set composition of single phase, the composition is ordered by Compounds
+            </summary>
+        </member>
+        <member name="P:CasterUnitCore.MaterialObject.AvailableTwoPhaseProp">
+            <summary>
+            get all available two phase property, for CO1.0 return all property
+            </summary>
+        </member>
+        <member name="M:CasterUnitCore.MaterialObject.GetTwoPhasePropList(System.String,CasterUnitCore.Phases,CasterUnitCore.Phases,CasterUnitCore.PropertyBasis,System.Boolean)">
+            <summary>
+            Get two phase property, if a phase is not present, will return new double[CompoundNum]
+            </summary>
+        </member>
+        <member name="M:CasterUnitCore.MaterialObject.SetTwoPhasePropList(System.String,CasterUnitCore.Phases,CasterUnitCore.Phases,CasterUnitCore.PropertyBasis,System.Collections.Generic.IEnumerable{System.Double})">
+            <summary>
+            set two phase property, 
+            </summary>
+            <paramCollection name="value">the value to be set, MUST be IEnumerable double, if you want to set other data structure, use the raw interface</paramCollection>
+        </member>
+        <member name="M:CasterUnitCore.MaterialObject.GetTwoPhasePropDouble(System.String,CasterUnitCore.Phases,CasterUnitCore.Phases,CasterUnitCore.PropertyBasis,System.Boolean)">
+            <summary>
+            get two phase property, return a double number, will try to calculate property first, if not present, return 0; if property is an array, throw exception
+            </summary>
+        </member>
+        <member name="M:CasterUnitCore.MaterialObject.SetTwoPhasePropDouble(System.String,CasterUnitCore.Phases,CasterUnitCore.Phases,CasterUnitCore.PropertyBasis,System.Double)">
+            <summary>
+            set two phase property
+            </summary>
+        </member>
+        <member name="P:CasterUnitCore.MaterialObject.AvailableConstProp">
+            <summary>
+            get all available constant property, unavailable for CO1.0 
+            </summary>
+        </member>
+        <member name="P:CasterUnitCore.MaterialObject.AvailableTDependentProp">
+            <summary>
+            get all available T-Dependent constant property, unavailable for CO1.0 
+            </summary>
+        </member>
+        <member name="P:CasterUnitCore.MaterialObject.AvailablePDependentProp">
+            <summary>
+            get all available P-Dependent constant property, unavailable for CO1.0 
+            </summary>
+        </member>
+        <member name="P:CasterUnitCore.MaterialObject.AvailableUniversalConstProp">
+            <summary>
+            get all available universal constant property, unavailable for CO1.0 
+            </summary>
+        </member>
+        <member name="M:CasterUnitCore.MaterialObject.GetCompoundConstPropDouble(System.String,System.String)">
+            <summary>
+            get constant property, return a double number, if not present, return 0; if property is an array, throw exception
+            </summary>
+        </member>
+        <member name="M:CasterUnitCore.MaterialObject.GetCompoundTDependentProp(System.String,System.String,System.Double)">
+            <summary>
+            get T-Dependent property, unavailable for CO1.0, return a double number, if not present, return 0; if property is an array, throw exception
+            </summary>
+        </member>
+        <member name="M:CasterUnitCore.MaterialObject.GetCompoundPDependentProp(System.String,System.String,System.Double)">
+            <summary>
+            get P-Dependent property, unavailable for CO1.0, return a double number, if not present, return 0; if property is an array, throw exception
+            </summary>
+        </member>
+        <member name="M:CasterUnitCore.MaterialObject.GetUniversalConstProp(System.String)">
+            <summary>
+            get universal constant property, return a double number, if not present, return 0; if property is an array, throw exception
+            </summary>
+            <paramCollection name="constantId"></paramCollection>
+            <returns></returns>
+        </member>
+        <member name="M:CasterUnitCore.MaterialObject.GetAllCompoundConstProp(System.String)">
+            <summary>
+            get constant property for all Compounds
+            </summary>
+            <paramCollection name="propName"></paramCollection>
+            <returns></returns>
+        </member>
+        <member name="M:CasterUnitCore.MaterialObject.SearchPropName(CasterUnitCore.PropertyCategory,System.String,System.String)">
+            <summary>
+            Search possible propertyName in Available Prop List, find the first one start will the possible name, if not found, return defaultName
+            </summary>
+            <paramCollection name="category">category of property</paramCollection>
+            <paramCollection name="possibleName">possible name of the property, like "gibbs" for "gibbsEnergy" or "gibbsFreeEnergy"</paramCollection>
+            <paramCollection name="defaultName">if not found, return defaultName, default defaultName is possibleName</paramCollection>
+            <returns></returns>
+        </member>
+        <member name="T:CasterUnitCore.MaterialObject10">
+            <summary>
+            CO1.0 material wrapper
+            </summary>
+        </member>
+        <member name="M:CasterUnitCore.MaterialObject10.#ctor">
+            <summary>
+            create a MaterialObject10
+            </summary>
+        </member>
+        <member name="M:CasterUnitCore.MaterialObject10.#ctor(System.Object)">
+            <summary>
+            create a MaterialObject10 connected to object, should only be invoked by CapeUnitPortBase
+            </summary>
+        </member>
+        <member name="T:CasterUnitCore.MaterialObject11">
+            <summary>
+            CO1.0 material wrapper
+            </summary>
+        </member>
+        <member name="M:CasterUnitCore.MaterialObject11.#ctor">
+            <summary>
+            create a MaterialObject11
+            </summary>
+        </member>
+        <member name="M:CasterUnitCore.MaterialObject11.#ctor(System.Object)">
+            <summary>
+            create a MaterialObject11 connected to object, should only be invoked by CapeUnitPortBase
+            </summary>
+        </member>
+        <member name="T:CasterUnitCore.Phases">
+            <summary>
+            This class is used to get phase name, because it might vary from softwares.
+            If the phase you need is not in this class, just create a new instance with the Value Property is the actual phase name
+            </summary>
+        </member>
+        <member name="F:CasterUnitCore.Phases.Vapor">
+            <summary>
+            Vapor phase
+            </summary>
+        </member>
+        <member name="F:CasterUnitCore.Phases.Liquid">
+            <summary>
+            Liquid phase
+            </summary>
+        </member>
+        <member name="F:CasterUnitCore.Phases.Solid">
+            <summary>
+            Solid phase
+            </summary>
+        </member>
+        <member name="P:CasterUnitCore.Phases.Value">
+            <summary>
+            actual string of this phase， could be modified in runtime
+            </summary>
+        </member>
+        <member name="M:CasterUnitCore.Phases.#ctor(System.String)">
+            <summary>
+            create a phase with the specified name
+            </summary>
+            <paramCollection name="phase"></paramCollection>
+        </member>
+        <member name="T:CasterUnitCore.PropertyBasis">
+            <summary>
+            Enum cannot override ToString, so use a class
+            </summary>
+        </member>
+        <member name="F:CasterUnitCore.PropertyBasis.Mole">
+            <summary>
+            mole-basis
+            </summary>
+        </member>
+        <member name="F:CasterUnitCore.PropertyBasis.Mass">
+            <summary>
+            mass-basis
+            </summary>
+        </member>
+        <member name="F:CasterUnitCore.PropertyBasis.Undefined">
+            <summary>
+            no basis, used for T,P,etc.
+            </summary>
+        </member>
+        <member name="T:CasterUnitCore.PropertyCategory">
+            <summary>
+            Property categories, used when you need to find the actual name of a property
+            </summary>
+        </member>
+        <member name="F:CasterUnitCore.PropertyCategory.SinglePhaseProp">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:CasterUnitCore.PropertyCategory.TwoPhaseProp">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:CasterUnitCore.PropertyCategory.ConstantProp">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:CasterUnitCore.PropertyCategory.UniversalConstantProp">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:CasterUnitCore.PropertyCategory.TDependentProp">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:CasterUnitCore.PropertyCategory.PDependentProp">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:XamlGeneratedNamespace.GeneratedInternalTypeHelper">
+            <summary>
+            GeneratedInternalTypeHelper
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.CreateInstance(System.Type,System.Globalization.CultureInfo)">
+            <summary>
+            CreateInstance
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.GetPropertyValue(System.Reflection.PropertyInfo,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            GetPropertyValue
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.SetPropertyValue(System.Reflection.PropertyInfo,System.Object,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            SetPropertyValue
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.CreateDelegate(System.Type,System.Object,System.String)">
+            <summary>
+            CreateDelegate
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.AddEventHandler(System.Reflection.EventInfo,System.Object,System.Delegate)">
+            <summary>
+            AddEventHandler
+            </summary>
+        </member>
+    </members>
+</doc>

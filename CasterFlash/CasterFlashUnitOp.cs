@@ -12,15 +12,9 @@
 * See the License for the specific language governing permissions and
 * limitations under the License.*/
 
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 using CasterUnitCore;
 using System.Runtime.InteropServices;
-using System.Reflection;
 using CAPEOPEN;
 
 namespace CasterFlash
@@ -62,10 +56,10 @@ namespace CasterFlash
         {
             Ports.Clear();
             Ports.Add(new CapeMaterialPort("feed", CapePortDirection.CAPE_INLET, "feed for Flash"));
-            Ports.Add(new CapeMaterialPort("product", CapePortDirection.CAPE_OUTLET, "product for Flash"));
+            Ports.Add(new CapeMaterialPort("vapor", CapePortDirection.CAPE_OUTLET, "vapor for Flash"));
+            Ports.Add(new CapeMaterialPort("liquid", CapePortDirection.CAPE_OUTLET, "liquid for Flash"));
             Ports.Add(new CapeEnergyPort("energy", CapePortDirection.CAPE_INLET));
         }
-
 
         void CasterFlash_OnGetPorts(CapeCollection ports)
         {
