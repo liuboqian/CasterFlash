@@ -8,7 +8,7 @@
         mc:Ignorable="d ignore"
         Height="300"
         Width="400"
-        Title="MVVM Light Application">
+        Title="CasterFlash">
 
     <Window.Resources>
         <ResourceDictionary>

@@ -2244,12 +2244,12 @@
         </member>
         <member name="P:CasterUnitCore.MaterialObject.VaporMaterial">
             <summary>
-            Get the vapor part of current material
+            Get the vapor part of current material, if this material is totally liquid, will return null
             </summary>
         </member>
         <member name="P:CasterUnitCore.MaterialObject.LiquidMaterial">
             <summary>
-            Get the liquid part of current material
+            Get the liquid part of current material, if this material is totally vapor, will return null
             </summary>
         </member>
         <member name="P:CasterUnitCore.MaterialObject.CompoundNum">

@@ -12,7 +12,7 @@
          <Members>
           <Member Name="#.ctor(System.String,CasterUnitCore.CapeOptionParameter)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message TypeName="DoNotCallOverridableMethodsInConstructors" Category="Microsoft.Usage" CheckId="CA2214" Status="Active" Created="2016-12-16 12:33:14Z" FixCategory="NonBreaking">
+            <Message TypeName="DoNotCallOverridableMethodsInConstructors" Category="Microsoft.Usage" CheckId="CA2214" Status="Active" Created="2017-01-03 02:20:50Z" FixCategory="NonBreaking">
              <Issue Certainty="95" Level="CriticalWarning" Path="C:\Working\CasterUnit\CasterFlash\CasterFlashGUI\ViewModel" File="OptionParamViewModel.cs" Line="16">'OptionParamViewModel.OptionParamViewModel(string, CapeOptionParameter)' 包含调用链，该调用链导致调用此类所定义的虚方法。请检查以下调用堆栈，看是否有意外结果: &#xD;&#xA;&#xD;&#xA;OptionParamViewModel..ctor(String, CapeOptionParameter)&#xD;&#xA;OptionParamViewModel.set_Op1(String):Void&#xD;&#xA;ObservableObject.RaisePropertyChanged(String):Void。</Issue>
             </Message>
            </Messages>
