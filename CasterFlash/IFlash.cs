@@ -24,10 +24,10 @@ namespace CasterFlash
 {
     public interface IFlash
     {
-        bool TPFlash(double T, double P, List<MaterialObject> feeds, out MaterialObject product);
-        bool PHFlash(double T, double P, List<MaterialObject> feeds, out MaterialObject product);
-        bool TVFFlash(double T, double P, List<MaterialObject> feeds, out MaterialObject product);
-        bool PVFFlash(double T, double P, List<MaterialObject> feeds, out MaterialObject product);
+        bool TPFlash(double T, double P, MaterialObject[] feeds, out MaterialObject product);
+        bool PHFlash(double T, double P, MaterialObject[] feeds, out MaterialObject product);
+        bool TVFFlash(double T, double P, MaterialObject[] feeds, out MaterialObject product);
+        bool PVFFlash(double T, double P, MaterialObject[] feeds, out MaterialObject product);
 
     }
 }

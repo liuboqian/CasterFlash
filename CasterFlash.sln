@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.40629.0
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.960
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CasterFlash", "CasterFlash\CasterFlash.csproj", "{C2E8A7EE-49CB-4704-88C2-ABC77CB5D191}"
 EndProject
@@ -10,19 +10,32 @@ EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
+		Debug|x64 = Debug|x64
 		Release|Any CPU = Release|Any CPU
+		Release|x64 = Release|x64
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{C2E8A7EE-49CB-4704-88C2-ABC77CB5D191}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{C2E8A7EE-49CB-4704-88C2-ABC77CB5D191}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C2E8A7EE-49CB-4704-88C2-ABC77CB5D191}.Debug|x64.ActiveCfg = Debug|x64
+		{C2E8A7EE-49CB-4704-88C2-ABC77CB5D191}.Debug|x64.Build.0 = Debug|x64
 		{C2E8A7EE-49CB-4704-88C2-ABC77CB5D191}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C2E8A7EE-49CB-4704-88C2-ABC77CB5D191}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C2E8A7EE-49CB-4704-88C2-ABC77CB5D191}.Release|x64.ActiveCfg = Release|x64
+		{C2E8A7EE-49CB-4704-88C2-ABC77CB5D191}.Release|x64.Build.0 = Release|x64
 		{360CCDAF-0E01-4C3A-9CB2-154DA40EC9ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{360CCDAF-0E01-4C3A-9CB2-154DA40EC9ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{360CCDAF-0E01-4C3A-9CB2-154DA40EC9ED}.Debug|x64.ActiveCfg = Debug|x64
+		{360CCDAF-0E01-4C3A-9CB2-154DA40EC9ED}.Debug|x64.Build.0 = Debug|x64
 		{360CCDAF-0E01-4C3A-9CB2-154DA40EC9ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{360CCDAF-0E01-4C3A-9CB2-154DA40EC9ED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{360CCDAF-0E01-4C3A-9CB2-154DA40EC9ED}.Release|x64.ActiveCfg = Release|x64
+		{360CCDAF-0E01-4C3A-9CB2-154DA40EC9ED}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F5F086CD-15DE-4B41-B30E-A6910DB2C013}
 	EndGlobalSection
 EndGlobal

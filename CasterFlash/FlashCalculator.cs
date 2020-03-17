@@ -48,25 +48,26 @@ namespace CasterFlash
             energyPort = (CapeEnergyPort)UnitOp.Ports["energy"];
             //get parameters
             flashOption = (FlashOptions)(CapeOptionParameter)UnitOp.Parameters["FlashOption"];
-            T = (CapeRealParameter)UnitOp.Parameters["T"];
-            P = (CapeRealParameter)UnitOp.Parameters["P"];
-            heatduty = (CapeRealParameter)UnitOp.Parameters["Heatduty"];
+            T = ((CapeRealParameter)UnitOp.Parameters["T"]).value;
+            P = ((CapeRealParameter)UnitOp.Parameters["P"]).value;
+            heatduty = ((CapeRealParameter)UnitOp.Parameters["Heatduty"]).value;
             if (energyPort.IsConnected()) heatduty += energyPort.Work;
-            vaporFraction = (CapeRealParameter)UnitOp.Parameters["VaporFraction"];
+            vaporFraction = ((CapeRealParameter)UnitOp.Parameters["VaporFraction"]).value;
         }
         /// <summary>
         /// Calculation
         /// </summary>
         public override void Calculate()
         {
+			var feedArr = feeds.ToArray();
             if (flashOption == FlashOptions.TP)
-                TPFlash(T, P, feeds, out product);
+                TPFlash(T, P, feedArr, out product);
             else if (flashOption == FlashOptions.PH)
-                PHFlash(P, heatduty, feeds, out product);
+                PHFlash(P, heatduty, feedArr, out product);
             else if (flashOption == FlashOptions.TVf)
-                TVFFlash(T, vaporFraction, feeds, out product);
+                TVFFlash(T, vaporFraction, feedArr, out product);
             else if (flashOption == FlashOptions.PVf)
-                PVFFlash(P, vaporFraction, feeds, out product);
+                PVFFlash(P, vaporFraction, feedArr, out product);
         }
         /// <summary>
         /// result is get from product
@@ -97,9 +98,9 @@ namespace CasterFlash
         /// because I wish other block could use this method.
         /// May be unnecessary, you can do it your way.
         /// </summary>
-        public bool TPFlash(double T, double P, List<MaterialObject> feeds, out MaterialObject product)
+        public bool TPFlash(double T, double P, MaterialObject[] feeds, out MaterialObject product)
         {
-            if (feeds.Count == 0) { product = null; return false; }
+            if (feeds.Length == 0) { product = null; return false; }
             product = feeds[0].Duplicate();
             product.T = T;
             product.P = P;
@@ -112,9 +113,9 @@ namespace CasterFlash
             return true;
         }
 
-        public bool PHFlash(double P, double heatDuty, List<MaterialObject> feeds, out MaterialObject product)
+        public bool PHFlash(double P, double heatDuty, MaterialObject[] feeds, out MaterialObject product)
         {
-            if (feeds.Count == 0) { product = null; return false; }
+            if (feeds.Length == 0) { product = null; return false; }
             product = feeds[0].Duplicate();
             product.P = P;
             double totalFlow;
@@ -127,9 +128,9 @@ namespace CasterFlash
             return true;
         }
 
-        public bool TVFFlash(double T, double vaporFraction, List<MaterialObject> feeds, out MaterialObject product)
+        public bool TVFFlash(double T, double vaporFraction, MaterialObject[] feeds, out MaterialObject product)
         {
-            if (feeds.Count == 0) { product = null; return false; }
+            if (feeds.Length == 0) { product = null; return false; }
             product = feeds[0].Duplicate();
             product.T = T;
             double totalFlow;
@@ -142,9 +143,9 @@ namespace CasterFlash
             return true;
         }
 
-        public bool PVFFlash(double P, double vaporFraction, List<MaterialObject> feeds, out MaterialObject product)
+        public bool PVFFlash(double P, double vaporFraction, MaterialObject[] feeds, out MaterialObject product)
         {
-            if (feeds.Count == 0) { product = null; return false; }
+            if (feeds.Length == 0) { product = null; return false; }
             product = feeds[0].Duplicate();
             product.P = P;
             double totalFlow;
@@ -157,7 +158,7 @@ namespace CasterFlash
             return true;
         }
 
-        private void MergeInputMaterial(List<MaterialObject> feeds, out double totalFlow, out Dictionary<string, double> composition)
+        private void MergeInputMaterial(MaterialObject[] feeds, out double totalFlow, out Dictionary<string, double> composition)
         {
             totalFlow = 0;
             foreach (var material in feeds)

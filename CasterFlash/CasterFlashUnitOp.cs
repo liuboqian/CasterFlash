@@ -22,7 +22,7 @@ namespace CasterFlash
     [ComVisible(true)]
     [Guid("8FFE8B95-FFAB-4032-B652-181AB5206E36")]
     [CapeName("CasterFlash")]
-    [CapeDescription("Flash block using CasterUnitBase")]
+    [CapeDescription("Flash block using CasterUnitCore")]
     [CapeHelpURL("liuboqian2015@outlook.com")]
     public class CasterFlashUnitOp : CasterUnitOperationBase
     {
@@ -88,12 +88,12 @@ namespace CasterFlash
         {
             bool hasInlet = Ports.Any(
                 x => x.Value is CapeMaterialPort
-                    && ((CapeUnitPort)x.Value).direction == CapePortDirection.CAPE_INLET
-                    && ((CapeUnitPort)x.Value).IsConnected());
+                    && ((CapeMaterialPort)x.Value).direction == CapePortDirection.CAPE_INLET
+                    && ((CapeMaterialPort)x.Value).IsConnected());
             bool hasOutlet = Ports.Any(
                 x => x.Value is CapeMaterialPort
-                    && ((CapeUnitPort)x.Value).direction == CapePortDirection.CAPE_OUTLET
-                    && ((CapeUnitPort)x.Value).IsConnected());
+                    && ((CapeMaterialPort)x.Value).direction == CapePortDirection.CAPE_OUTLET
+                    && ((CapeMaterialPort)x.Value).IsConnected());
 
             message = "";
             if (!hasInlet) 
@@ -129,10 +129,10 @@ namespace CasterFlash
             return false;
         }
 
-        //protected override void OpenEditWindow()
-        //{
-        //    Assembly guiAsm=Assembly.Load(@"CasterFlashGUI.exe");
-        //    guiAsm.get
-        //}
+   //     protected override void OpenEditWindow()
+   //     {
+			//casterflashg
+
+   //     }
     }
 }
